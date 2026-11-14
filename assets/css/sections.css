@@ -499,6 +499,14 @@
   margin-top: auto;
 }
 
+.servicos__nota {
+  max-width: 65ch;
+  margin: var(--esp-4) auto 0;
+  color: var(--cor-cinza-texto);
+  font-size: var(--fs-pequeno);
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .servicos__grade {
     grid-template-columns: repeat(2, 1fr);
@@ -683,21 +691,6 @@
 /* ==========================================================================
    Depoimentos (#depoimentos) — carrossel (controles na Parte 3)
    ========================================================================== */
-.depoimentos__nota {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--esp-1);
-  padding: var(--esp-1) var(--esp-3);
-  border-radius: var(--raio-pilula);
-  background-color: var(--cor-preto);
-  color: var(--cor-branco);
-}
-
-.depoimentos__nota .icone {
-  color: var(--cor-amarelo);
-  fill: currentColor;
-}
-
 /* Sem JS: rolagem horizontal com encaixe (scroll-snap) */
 .carrossel__trilha {
   display: grid;
@@ -790,20 +783,6 @@
 .carrossel__botao:focus-visible {
   background-color: var(--cor-preto);
   color: var(--cor-branco);
-}
-
-.depoimentos__acao {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--esp-1);
-  margin-top: var(--esp-4);
-  text-align: center;
-}
-
-.depoimentos__pendencia {
-  color: var(--cor-cinza-texto);
-  font-size: var(--fs-pequeno);
 }
 
 @media (min-width: 768px) {
