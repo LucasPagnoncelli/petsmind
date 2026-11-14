@@ -1,0 +1,378 @@
+/* ==========================================================================
+   Pet's Mind Adestramento — Seções
+   Um bloco comentado por região/seção da página.
+   Cores e fontes somente via variáveis (variables.css).
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Logo (círculo branco sobre fundo preto)
+   ========================================================================== */
+.logo {
+  display: inline-grid;
+  place-items: center;
+  width: var(--logo-altura);
+  height: var(--logo-altura);
+  border-radius: 50%;
+  background-color: var(--cor-branco);
+  flex-shrink: 0;
+  transition: width var(--transicao), height var(--transicao);
+}
+
+.logo__img {
+  width: 84%;
+  height: 84%;
+  object-fit: contain;
+}
+
+
+/* ==========================================================================
+   Cabeçalho fixo
+   Mobile/tablet: linha 1 = logo + botão; linha 2 = menu (rolagem horizontal).
+   Desktop (≥ 1024px): tudo em uma linha.
+   Ao rolar, recebe .cabecalho--compacto (menu.js) e encolhe.
+   ========================================================================== */
+.cabecalho {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-cabecalho);
+  background-color: var(--cor-preto);
+  color: var(--cor-branco);
+  transition: box-shadow var(--transicao);
+}
+
+.cabecalho--compacto {
+  --cabecalho-linha: var(--cabecalho-linha-compacta);
+  --logo-altura: var(--logo-altura-compacta);
+  box-shadow: var(--sombra-flutuante);
+}
+
+.cabecalho__interno {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: var(--cabecalho-linha) var(--cabecalho-nav);
+  grid-template-areas:
+    "logo cta"
+    "nav  nav";
+  align-items: center;
+  column-gap: var(--esp-2);
+  transition: grid-template-rows var(--transicao);
+}
+
+.cabecalho__logo {
+  grid-area: logo;
+}
+
+.cabecalho__cta {
+  grid-area: cta;
+  justify-self: end;
+}
+
+.cabecalho__nav {
+  grid-area: nav;
+  align-self: stretch;
+  min-width: 0;
+  border-top: 1px solid var(--cor-borda-escura);
+}
+
+/* Menu */
+.nav__lista {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-1);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+
+.nav__lista::-webkit-scrollbar {
+  display: none;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--esp-1);
+  border-radius: var(--raio-pilula);
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-pequeno);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transicao);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--cor-amarelo);
+}
+
+@media (min-width: 768px) {
+  .nav__lista {
+    justify-content: center;
+    gap: var(--esp-2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cabecalho__interno {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: var(--cabecalho-linha);
+    grid-template-areas: "logo nav cta";
+    column-gap: var(--esp-3);
+  }
+
+  .cabecalho__nav {
+    align-self: center;
+    border-top: 0;
+  }
+
+  .nav__lista {
+    gap: var(--esp-1);
+    overflow: visible;
+  }
+
+  .nav__link {
+    font-size: 0.9375rem; /* 15px */
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav__lista {
+    gap: var(--esp-2);
+  }
+}
+
+
+/* ==========================================================================
+   Hero (#inicio) — fundo preto com detalhe amarelo
+   Esqueleto: o layout final entra na Parte 2.
+   ========================================================================== */
+.hero {
+  padding-top: calc(var(--altura-cabecalho) + var(--esp-6));
+  border-bottom: var(--esp-1) solid var(--cor-amarelo);
+}
+
+.hero__titulo {
+  max-width: 18ch;
+  margin-bottom: var(--esp-2);
+  color: var(--cor-branco);
+}
+
+.hero__titulo-destaque {
+  color: var(--cor-amarelo);
+}
+
+.hero__subtitulo {
+  max-width: 60ch;
+  margin-bottom: var(--esp-4);
+  color: var(--cor-texto-claro-secundario);
+}
+
+
+/* ==========================================================================
+   Sobre o adestrador (#sobre) — Parte 2
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Serviços (#servicos) — Parte 2
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Como funciona (#como-funciona) — Parte 2
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Resultados (#resultados) — Parte 2
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Depoimentos (#depoimentos) — Parte 2
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Área de atendimento (#atendimento) — Parte 2
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Dúvidas frequentes (#duvidas) — Parte 2
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Contato (#contato) — Parte 2
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Rodapé
+   ========================================================================== */
+.rodape {
+  border-top: var(--esp-1) solid var(--cor-amarelo);
+  background-color: var(--cor-preto);
+  color: var(--cor-texto-claro-secundario);
+  font-size: var(--fs-pequeno);
+}
+
+.rodape__grade {
+  display: grid;
+  gap: var(--esp-5);
+  padding-block: var(--esp-8) var(--esp-6);
+}
+
+.rodape__marca {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: var(--esp-2);
+}
+
+.rodape .logo {
+  --logo-altura: 72px;
+}
+
+.rodape__frase {
+  max-width: 36ch;
+}
+
+.rodape__titulo {
+  margin-bottom: var(--esp-2);
+  color: var(--cor-amarelo);
+  font-size: var(--fs-texto);
+  font-weight: 700;
+}
+
+.rodape__lista {
+  display: grid;
+  gap: var(--esp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rodape__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-1);
+  min-height: 32px;
+  color: var(--cor-branco);
+  text-decoration: none;
+  transition: color var(--transicao);
+}
+
+.rodape__link:hover,
+.rodape__link:focus-visible {
+  color: var(--cor-amarelo);
+  text-decoration: underline;
+}
+
+.rodape__link .icone,
+.rodape__item .icone {
+  color: var(--cor-amarelo);
+}
+
+.rodape__item {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-1);
+  min-height: 32px;
+}
+
+/* Ícones das redes sociais */
+.rodape__sociais {
+  display: flex;
+  gap: var(--esp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rodape__social {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--cor-amarelo);
+  border-radius: 50%;
+  color: var(--cor-amarelo);
+  transition: background-color var(--transicao), color var(--transicao);
+}
+
+.rodape__social:hover,
+.rodape__social:focus-visible {
+  background-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+}
+
+.rodape__base {
+  border-top: 1px solid var(--cor-borda-escura);
+}
+
+.rodape__base-interno {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-1) var(--esp-3);
+  /* espaço extra no fim para o botão flutuante não cobrir o texto */
+  padding-block: var(--esp-3) calc(var(--esp-3) + 72px);
+}
+
+.rodape__base p {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .rodape__grade {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   Botão flutuante do WhatsApp (único lugar com --cor-whatsapp)
+   ========================================================================== */
+.whatsapp-flutuante {
+  position: fixed;
+  right: var(--esp-2);
+  bottom: var(--esp-2);
+  z-index: var(--z-flutuante);
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--cor-whatsapp);
+  color: var(--cor-preto);
+  box-shadow: var(--sombra-flutuante);
+  transition: transform var(--transicao);
+}
+
+.whatsapp-flutuante .icone {
+  width: 28px;
+  height: 28px;
+}
+
+.whatsapp-flutuante:hover,
+.whatsapp-flutuante:focus-visible {
+  transform: scale(1.08);
+}
+
+@media (min-width: 768px) {
+  .whatsapp-flutuante {
+    right: var(--esp-3);
+    bottom: var(--esp-3);
+    width: 64px;
+    height: 64px;
+  }
+}

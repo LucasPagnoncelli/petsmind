@@ -1,0 +1,435 @@
+/* ==========================================================================
+   Pet's Mind Adestramento — Base
+   Fontes, reset, tipografia, utilitários e botões.
+   Cores e fontes somente via variáveis (variables.css).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Fontes locais (assets/fonts/*.woff2)
+   Os arquivos .woff2 ainda não estão no repositório: enquanto isso, o site
+   usa o fallback system-ui definido em --fonte-titulo / --fonte-texto.
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/open-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/open-sans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   Reset moderno
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--cor-branco);
+  color: var(--cor-preto);
+  font-family: var(--fonte-texto);
+  font-size: var(--fs-texto);
+  font-weight: 400;
+  line-height: var(--lh-texto);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* O atributo hidden precisa vencer o display:block do reset (ex.: <svg hidden>) */
+[hidden] {
+  display: none;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+}
+
+/* Âncoras: compensa a altura do cabeçalho fixo (já compacto após rolar).
+   As seções encostam no cabeçalho (o padding delas dá o respiro);
+   os demais alvos ganham uma folga extra. */
+[id] {
+  scroll-margin-top: calc(var(--altura-cabecalho-compacto) + var(--esp-2));
+}
+
+main > section[id] {
+  scroll-margin-top: var(--altura-cabecalho-compacto);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;      /* exceção justificada: acessibilidade */
+    animation-iteration-count: 1 !important;    /* exceção justificada: acessibilidade */
+    transition-duration: 0.01ms !important;     /* exceção justificada: acessibilidade */
+    scroll-behavior: auto !important;           /* exceção justificada: acessibilidade */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tipografia
+   -------------------------------------------------------------------------- */
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  line-height: var(--lh-titulo);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+/* Foco visível: anel preto interno + amarelo externo (visível em fundo claro e escuro) */
+:focus-visible {
+  outline: 3px solid var(--cor-amarelo);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--cor-preto);
+}
+
+::selection {
+  background-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+}
+
+/* --------------------------------------------------------------------------
+   Utilitários
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--container-gutter));
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Link "pular para o conteúdo" (aparece ao receber foco pelo teclado) */
+.pular-link {
+  position: absolute;
+  top: var(--esp-1);
+  left: var(--esp-1);
+  z-index: calc(var(--z-cabecalho) + 1);
+  padding: var(--esp-1) var(--esp-2);
+  background-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  border-radius: var(--raio-pilula);
+  transform: translateY(-200%);
+  transition: transform var(--transicao);
+}
+
+.pular-link:focus {
+  transform: translateY(0);
+}
+
+/* Ícones SVG inline (estilo de linha, herdam a cor do texto) */
+.icone {
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Seções: fundos alternados */
+.secao {
+  padding-block: var(--secao-padding);
+}
+
+.secao--clara {
+  background-color: var(--cor-branco);
+  color: var(--cor-preto);
+}
+
+.secao--cinza {
+  background-color: var(--cor-cinza-claro);
+  color: var(--cor-preto);
+}
+
+.secao--escura {
+  background-color: var(--cor-preto);
+  color: var(--cor-branco);
+}
+
+.secao__titulo {
+  margin-bottom: var(--esp-3);
+}
+
+.secao--escura .secao__titulo {
+  color: var(--cor-amarelo);
+}
+
+.secao__texto {
+  max-width: 65ch;
+  color: var(--cor-cinza-texto);
+}
+
+.secao--escura .secao__texto {
+  color: var(--cor-texto-claro-secundario);
+}
+
+/* Placeholder neutro para conteúdo ainda não produzido */
+.placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  margin-top: var(--esp-4);
+  padding: var(--esp-3);
+  border: 2px dashed var(--cor-borda);
+  border-radius: var(--raio-cartao);
+  background-color: var(--cor-cinza-claro);
+  color: var(--cor-cinza-texto);
+  font-size: var(--fs-pequeno);
+  text-align: center;
+}
+
+.secao--cinza .placeholder {
+  background-color: var(--cor-branco);
+}
+
+.secao--escura .placeholder {
+  border-color: var(--cor-borda-escura);
+  background-color: transparent;
+  color: var(--cor-texto-claro-secundario);
+}
+
+/* --------------------------------------------------------------------------
+   Botões
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--esp-1);
+  min-height: 48px;
+  padding: 0.75rem 1.75rem;
+  border: 2px solid transparent;
+  border-radius: var(--raio-pilula);
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-botao);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicao), color var(--transicao),
+    border-color var(--transicao), transform var(--transicao);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Primário: amarelo com texto preto */
+.btn--primario {
+  background-color: var(--cor-amarelo);
+  border-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+}
+
+.btn--primario:hover,
+.btn--primario:focus-visible {
+  background-color: var(--cor-amarelo-escuro);
+  border-color: var(--cor-amarelo-escuro);
+}
+
+/* Secundário: contorno (preto em fundo claro, branco em fundo escuro) */
+.btn--secundario {
+  background-color: transparent;
+  border-color: var(--cor-preto);
+  color: var(--cor-preto);
+}
+
+.btn--secundario:hover,
+.btn--secundario:focus-visible {
+  background-color: var(--cor-preto);
+  color: var(--cor-branco);
+}
+
+.secao--escura .btn--secundario {
+  border-color: var(--cor-branco);
+  color: var(--cor-branco);
+}
+
+.secao--escura .btn--secundario:hover,
+.secao--escura .btn--secundario:focus-visible {
+  background-color: var(--cor-branco);
+  color: var(--cor-preto);
+}
+
+/* WhatsApp: preto com ícone amarelo (em fundo escuro, vira amarelo) */
+.btn--whatsapp {
+  background-color: var(--cor-preto);
+  border-color: var(--cor-preto);
+  color: var(--cor-branco);
+}
+
+.btn--whatsapp .icone {
+  color: var(--cor-amarelo);
+}
+
+.btn--whatsapp:hover,
+.btn--whatsapp:focus-visible {
+  background-color: var(--cor-amarelo);
+  border-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+}
+
+.btn--whatsapp:hover .icone,
+.btn--whatsapp:focus-visible .icone {
+  color: var(--cor-preto);
+}
+
+.secao--escura .btn--whatsapp {
+  background-color: var(--cor-amarelo);
+  border-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+}
+
+.secao--escura .btn--whatsapp .icone {
+  color: var(--cor-preto);
+}
+
+.secao--escura .btn--whatsapp:hover,
+.secao--escura .btn--whatsapp:focus-visible {
+  background-color: var(--cor-amarelo-escuro);
+  border-color: var(--cor-amarelo-escuro);
+}
+
+/* Tamanho reduzido (usado no cabeçalho, onde o espaço é curto) */
+.btn--pequeno {
+  min-height: 40px;
+  padding: 0.5rem 1rem;
+  font-size: var(--fs-pequeno);
+}
+
+/* Grupo de botões */
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2);
+}

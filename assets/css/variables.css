@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Pet's Mind Adestramento — Variáveis (design tokens)
+   Única fonte de cores, fontes, espaçamentos e medidas do site.
+   Nenhuma cor deve ser escrita fora deste arquivo.
+   ========================================================================== */
+
+:root {
+  /* ---------- Cores da marca ---------- */
+  --cor-preto: #111111;          /* cabeçalho, rodapé, seções de destaque, texto principal */
+  --cor-amarelo: #F7DE42;        /* botões de ação, destaques, ícones */
+  --cor-amarelo-escuro: #D9BE1F; /* hover/foco dos botões amarelos */
+  --cor-branco: #FFFFFF;         /* fundo principal */
+  --cor-cinza-claro: #F4F4F2;    /* fundo alternado de seções e cartões */
+  --cor-cinza-texto: #555555;    /* texto secundário (somente sobre fundo claro) */
+  --cor-whatsapp: #25D366;       /* somente botão flutuante do WhatsApp */
+
+  /* ---------- Cores derivadas (apoio) ---------- */
+  --cor-texto-claro-secundario: #CFCFCF; /* texto secundário sobre fundo preto (contraste 12:1) */
+  --cor-borda: #DDDDD8;                  /* bordas sutis sobre fundo claro */
+  --cor-borda-escura: #333333;           /* bordas sutis sobre fundo preto */
+  --cor-sombra: rgba(17, 17, 17, 0.18);  /* sombras */
+  --cor-sombra-forte: rgba(17, 17, 17, 0.35);
+
+  /* ---------- Fontes ---------- */
+  --fonte-titulo: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fonte-texto: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Tamanhos (mobile-first; os valores de desktop entram na media query abaixo) */
+  --fs-h1: 2rem;        /* 32px */
+  --fs-h2: 1.625rem;    /* 26px */
+  --fs-h3: 1.25rem;     /* 20px */
+  --fs-texto: 1rem;     /* 16px */
+  --fs-pequeno: 0.875rem; /* 14px */
+  --fs-botao: 1rem;     /* 16px */
+
+  --lh-titulo: 1.2;
+  --lh-texto: 1.6;
+
+  /* ---------- Espaçamentos (múltiplos de 8px) ---------- */
+  --esp-1: 0.5rem;  /*  8px */
+  --esp-2: 1rem;    /* 16px */
+  --esp-3: 1.5rem;  /* 24px */
+  --esp-4: 2rem;    /* 32px */
+  --esp-5: 2.5rem;  /* 40px */
+  --esp-6: 3rem;    /* 48px */
+  --esp-8: 4rem;    /* 64px */
+  --esp-10: 5rem;   /* 80px */
+  --esp-12: 6rem;   /* 96px */
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;
+  --container-gutter: var(--esp-2);
+  --secao-padding: var(--esp-8);
+
+  /* Cabeçalho fixo: altura normal e compacta (ao rolar) */
+  --logo-altura: 44px;
+  --logo-altura-compacta: 36px;
+  --cabecalho-linha: 64px;           /* linha do logo + botão */
+  --cabecalho-linha-compacta: 52px;
+  --cabecalho-nav: 44px;             /* linha do menu (somente mobile/tablet) */
+  --altura-cabecalho: calc(var(--cabecalho-linha) + var(--cabecalho-nav));
+  --altura-cabecalho-compacto: calc(var(--cabecalho-linha-compacta) + var(--cabecalho-nav));
+
+  /* ---------- Componentes ---------- */
+  --raio-cartao: 12px;
+  --raio-pilula: 999px;
+  --sombra-cartao: 0 4px 16px var(--cor-sombra);
+  --sombra-flutuante: 0 6px 20px var(--cor-sombra-forte);
+
+  --transicao: 200ms ease;
+  --z-cabecalho: 100;
+  --z-flutuante: 90;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  :root {
+    --fs-h1: 3rem;        /* 48px */
+    --fs-h2: 2.25rem;     /* 36px */
+    --fs-h3: 1.375rem;    /* 22px */
+    --fs-texto: 1.125rem; /* 18px */
+
+    --container-gutter: var(--esp-4);
+    --secao-padding: var(--esp-10);
+  }
+}
+
+/* Desktop: cabeçalho em uma única linha */
+@media (min-width: 1024px) {
+  :root {
+    --logo-altura: 56px;
+    --logo-altura-compacta: 44px;
+    --cabecalho-linha: 88px;
+    --cabecalho-linha-compacta: 64px;
+    --cabecalho-nav: 0px;
+
+    --secao-padding: var(--esp-12);
+  }
+}

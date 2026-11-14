@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="logo-titulo">
+  <!-- LOGO PROVISÓRIO: substituir pelo arquivo oficial da Pet's Mind (mesmo nome: logo.svg). -->
+  <title id="logo-titulo">Pet's Mind Adestramento</title>
+  <g fill="#111111">
+    <ellipse cx="19" cy="40" rx="10" ry="13" transform="rotate(-25 19 40)"/>
+    <ellipse cx="38" cy="22" rx="10.5" ry="14" transform="rotate(-8 38 22)"/>
+    <ellipse cx="62" cy="22" rx="10.5" ry="14" transform="rotate(8 62 22)"/>
+    <ellipse cx="81" cy="40" rx="10" ry="13" transform="rotate(25 81 40)"/>
+    <path d="M50 46c-12 0-17 9-23 17-5 7-8 11-8 17 0 9 7 14 15 14 7 0 10-3 16-3s9 3 16 3c8 0 15-5 15-14 0-6-3-10-8-17-6-8-11-17-23-17z"/>
+  </g>
+  <g font-family="'Arial Black', 'Montserrat', Arial, sans-serif" font-weight="900" text-anchor="middle"
+     fill="#F7DE42" stroke="#111111" stroke-width="1.6" stroke-linejoin="round" paint-order="stroke">
+    <text x="50" y="36" font-size="15" letter-spacing="0.5">PET'S</text>
+    <text x="50" y="80" font-size="15" letter-spacing="0.5">MIND</text>
+  </g>
+</svg>
