@@ -137,8 +137,7 @@
           </div>
         </div>
         <div class="hero__midia">
-          <!-- Trocar por <img> WebP da pasta assets/img/hero/ (com fetchpriority="high", sem lazy) -->
-          <div class="placeholder placeholder--foto hero__foto">Foto do Jhonatan com um cão</div>
+          <img class="hero__foto" src="assets/img/hero/jhonatan-com-cao.webp" width="392" height="490" fetchpriority="high" alt="Jhonatan D., adestrador da Pet's Mind, sorrindo ao lado de um cão preto">
         </div>
       </div>
       <div class="container">
@@ -163,8 +162,7 @@
     <section class="secao secao--clara sobre" id="sobre" aria-labelledby="sobre-titulo">
       <div class="container sobre__grade">
         <div class="sobre__midia">
-          <!-- Trocar por <img> WebP da pasta assets/img/sobre/ (loading="lazy") -->
-          <div class="placeholder placeholder--foto sobre__foto">Foto do Jhonatan D.</div>
+          <img class="sobre__foto" src="assets/img/sobre/jhonatan-treinando-filhote.webp" width="577" height="721" loading="lazy" alt="Jhonatan D. treinando um filhote de pastor-alemão com guia e brinquedo de corda">
         </div>
         <div class="sobre__conteudo">
           <h2 class="secao__titulo" id="sobre-titulo">Sobre o adestrador</h2>
@@ -185,11 +183,11 @@
 
       <div class="container sobre__video">
         <h3 class="sobre__video-titulo">Conheça um pouco da minha história como adestrador</h3>
-        <!-- Sem JS, o link abre o vídeo no YouTube. Na Parte 3, o clique troca a capa pelo player
-             youtube-nocookie.com, carregado só nesse momento. Para usar a miniatura real,
-             salve-a como assets/img/sobre/video-historia.webp e coloque um <img> dentro do link. -->
+        <!-- Sem JS, o link abre o vídeo no YouTube. Na Parte 3, o clique troca a capa (foto local)
+             pelo player youtube-nocookie.com, carregado só nesse momento. -->
         <div class="video" data-youtube-id="eS8RAt--nu4">
-          <a class="video__capa" href="https://www.youtube.com/watch?v=eS8RAt--nu4" target="_blank" rel="noopener">
+          <a class="video__capa video__capa--foto" href="https://www.youtube.com/watch?v=eS8RAt--nu4" target="_blank" rel="noopener">
+            <img src="assets/img/sobre/capa-video-historia.webp" width="707" height="398" loading="lazy" alt="">
             <span class="video__play"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-play"/></svg></span>
             <span class="video__legenda">
               <span class="video__titulo">Conheça um pouco da minha história</span>
@@ -526,19 +524,12 @@
       <div class="container atendimento__grade">
         <div class="atendimento__conteudo">
           <h2 class="secao__titulo" id="atendimento-titulo">Onde eu atendo</h2>
-          <p class="secao__texto">Atendimento no conforto da sua casa, em Rio do Sul e região.</p>
-          <p class="atendimento__pendencia">[A CONFIRMAR: cidades atendidas — lista sugerida]</p>
-          <ul class="cidades">
-          <li class="cidades__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg>Rio do Sul</li>
-          <li class="cidades__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg>Lontras</li>
-          <li class="cidades__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg>Ibirama</li>
-          <li class="cidades__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg>Presidente Getúlio</li>
-          <li class="cidades__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg>Laurentino</li>
-          <li class="cidades__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg>Aurora</li>
-          <li class="cidades__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg>Agronômica</li>
-          <li class="cidades__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg>Ituporanga</li>
-          </ul>
-          <p class="atendimento__extra">Sua cidade não está na lista? Me chame no WhatsApp e a gente conversa.</p>
+          <p class="secao__texto">Vou até você: o treino acontece no conforto da sua casa, onde o cão vive a rotina dele.</p>
+          <p class="atendimento__local">
+            <span class="icone-circulo"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-local"/></svg></span>
+            <span><strong>Rio do Sul e região</strong><br>Alto Vale do Itajaí — SC</span>
+          </p>
+          <p class="atendimento__extra">Mora em uma cidade vizinha? Me chame no WhatsApp e a gente combina.</p>
           <a class="btn btn--whatsapp" href="#contato" data-whatsapp>
             <svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-whatsapp"/></svg>
             <span>Perguntar sobre minha cidade</span>

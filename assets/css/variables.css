@@ -24,6 +24,8 @@
   --cor-borda-escura: #333333;           /* bordas sutis sobre fundo preto */
   --cor-sombra: rgba(17, 17, 17, 0.18);  /* sombras */
   --cor-sombra-forte: rgba(17, 17, 17, 0.35);
+  --cor-sobreposicao: rgba(17, 17, 17, 0.85);      /* camada escura sobre fotos (base) */
+  --cor-sobreposicao-leve: rgba(17, 17, 17, 0.25); /* camada escura sobre fotos (topo) */
 
   /* ---------- Fontes ---------- */
   --fonte-titulo: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;

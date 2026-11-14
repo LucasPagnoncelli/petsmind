@@ -198,7 +198,10 @@
 
 .hero__foto {
   position: relative;
+  width: 100%;
   aspect-ratio: 4 / 5;
+  border-radius: var(--raio-cartao);
+  object-fit: cover;
 }
 
 /* Faixa de confiança */
@@ -263,7 +266,10 @@
 }
 
 .sobre__foto {
-  aspect-ratio: 1 / 1;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--raio-cartao);
+  object-fit: cover;
 }
 
 .sobre__texto {
@@ -366,9 +372,28 @@
 .video__capa img {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Com foto: a pegada decorativa vira uma camada escura (legibilidade do texto) */
+.video__capa--foto::before {
+  inset: 0;
+  z-index: 1;
+  width: auto;
+  aspect-ratio: auto;
+  background: linear-gradient(to top, var(--cor-sobreposicao) 0%, var(--cor-sobreposicao-leve) 55%);
+  opacity: 1;
+  -webkit-mask: none;
+  mask: none;
+  transform: none;
+}
+
+.video__capa--foto .video__play,
+.video__capa--foto .video__legenda {
+  z-index: 2;
 }
 
 .video__play {
@@ -840,7 +865,7 @@
 
 
 /* ==========================================================================
-   Área de atendimento (#atendimento) — cidades + mapa
+   Área de atendimento (#atendimento) — região + mapa
    ========================================================================== */
 .atendimento__grade {
   display: grid;
@@ -848,35 +873,19 @@
   align-items: center;
 }
 
-.atendimento__pendencia {
-  margin: var(--esp-3) 0 var(--esp-2);
-  color: var(--cor-cinza-texto);
-  font-size: var(--fs-pequeno);
-}
-
-.cidades {
+.atendimento__local {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--esp-1);
-  margin: 0 0 var(--esp-4);
-  padding: 0;
-  list-style: none;
-}
-
-.cidades__item {
-  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px var(--esp-2) 6px 12px;
-  border-radius: var(--raio-pilula);
-  background-color: var(--cor-cinza-claro);
-  font-size: var(--fs-pequeno);
-  font-weight: 600;
+  gap: var(--esp-2);
+  margin: var(--esp-4) 0;
+  color: var(--cor-cinza-texto);
 }
 
-.cidades__item .icone {
-  width: 1em;
-  height: 1em;
+.atendimento__local strong {
+  color: var(--cor-preto);
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-h3);
+  font-weight: 700;
 }
 
 .atendimento__extra {
