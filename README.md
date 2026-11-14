@@ -24,7 +24,10 @@ assets/
     whatsapp.js            monta os links do WhatsApp a partir do config.js
     links.js               aplica os links de Instagram/YouTube do config.js
     menu.js                cabeçalho compacto ao rolar (menu mobile na Parte 3)
-  img/                     logo, fotos (hero, sobre, resultados, depoimentos)
+  img/
+    logo/                  logo.svg (vetorial), logo-512.png, favicon.ico,
+                           apple-touch-icon.png e logo-original.jpg (arquivo enviado)
+    hero/ sobre/ ...       fotos (hero, sobre, resultados, depoimentos)
   fonts/                   fontes .woff2 (Montserrat e Open Sans)
 ```
 

@@ -1,16 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="logo-titulo">
-  <!-- LOGO PROVISÓRIO: substituir pelo arquivo oficial da Pet's Mind (mesmo nome: logo.svg). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="34 44 532 500" role="img" aria-labelledby="logo-titulo">
+  <!-- Logo Pet's Mind Adestramento: versão vetorial redesenhada a partir do arquivo enviado pelo cliente (logo-original.jpg). -->
   <title id="logo-titulo">Pet's Mind Adestramento</title>
   <g fill="#111111">
-    <ellipse cx="19" cy="40" rx="10" ry="13" transform="rotate(-25 19 40)"/>
-    <ellipse cx="38" cy="22" rx="10.5" ry="14" transform="rotate(-8 38 22)"/>
-    <ellipse cx="62" cy="22" rx="10.5" ry="14" transform="rotate(8 62 22)"/>
-    <ellipse cx="81" cy="40" rx="10" ry="13" transform="rotate(25 81 40)"/>
-    <path d="M50 46c-12 0-17 9-23 17-5 7-8 11-8 17 0 9 7 14 15 14 7 0 10-3 16-3s9 3 16 3c8 0 15-5 15-14 0-6-3-10-8-17-6-8-11-17-23-17z"/>
+    <path transform="translate(103 280) rotate(-15)" d="M0 -97C43.2 -97 60 -43.6 60 9.7C60 63.1 36 97 0 97C-36 97 -60 63.1 -60 9.7C-60 -43.6 -43.2 -97 0 -97Z"/>
+    <path transform="translate(215 156) rotate(-5)" d="M0 -105C48.2 -105 67 -47.2 67 10.5C67 68.2 40.2 105 0 105C-40.2 105 -67 68.2 -67 10.5C-67 -47.2 -48.2 -105 0 -105Z"/>
+    <path transform="translate(380 156) rotate(5)" d="M0 -105C48.2 -105 67 -47.2 67 10.5C67 68.2 40.2 105 0 105C-40.2 105 -67 68.2 -67 10.5C-67 -47.2 -48.2 -105 0 -105Z"/>
+    <path transform="translate(494 280) rotate(15)" d="M0 -97C43.2 -97 60 -43.6 60 9.7C60 63.1 36 97 0 97C-36 97 -60 63.1 -60 9.7C-60 -43.6 -43.2 -97 0 -97Z"/>
+    <path d="M300 264C338 264 366 288 398 330C438 383 462 420 460 468C457 512 430 535 395 535C360 535 335 521 300 521C265 521 240 535 205 535C170 535 143 512 140 468C138 420 162 383 202 330C234 288 262 264 300 264Z"/>
   </g>
-  <g font-family="'Arial Black', 'Montserrat', Arial, sans-serif" font-weight="900" text-anchor="middle"
-     fill="#F7DE42" stroke="#111111" stroke-width="1.6" stroke-linejoin="round" paint-order="stroke">
-    <text x="50" y="36" font-size="15" letter-spacing="0.5">PET'S</text>
-    <text x="50" y="80" font-size="15" letter-spacing="0.5">MIND</text>
+  <defs>
+    <g id="logo-letras" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+      <path transform="translate(68 255) scale(1.17)" d="M9.5 54.5V9.5H32A13.5 13.5 0 0 1 32 36.5H9.5"/>
+      <path transform="translate(185 120) scale(1.17)" d="M47 9.5H9.5V54.5H47M9.5 32H43"/>
+      <path transform="translate(335 120) scale(1.17)" d="M9.5 9.5H50.5M30 9.5V54.5M74 8L71 21"/>
+      <path transform="translate(458 255) scale(1.17)" d="M48.9 16C45.1 10 37.6 9.5 28.9 9.5C17.6 9.5 9.5 13 9.5 20.5C9.5 28 17.6 30 28.9 32C40.1 34 48.25 36 48.25 43.5C48.25 51 40.1 54.5 28.9 54.5C18.9 54.5 11.4 53 7.6 47"/>
+    </g>
+  </defs>
+  <!-- Letras dos dedos (P E T' S): contorno amarelo, miolo preto -->
+  <use href="#logo-letras" stroke="#F7DE42" stroke-width="17"/>
+  <use href="#logo-letras" stroke="#111111" stroke-width="11.5"/>
+  <!-- MIND na almofada: amarelo sólido -->
+  <g fill="#F7DE42" fill-rule="evenodd" transform="translate(168 405) scale(1.07 1.13)">
+    <path d="M0 62V0H24L38 34L52 0H76V62H59V24L46 62H30L17 24V62Z"/>
+    <path d="M84 0H103V62H84Z"/>
+    <path d="M111 62V0H130L156 38V0H175V62H156L130 24V62Z"/>
+    <path d="M183 0H213A34 31 0 0 1 213 62H183ZM202 16V46H211A16 15 0 0 0 211 16Z"/>
   </g>
 </svg>
