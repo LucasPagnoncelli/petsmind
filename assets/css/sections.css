@@ -714,22 +714,54 @@
   scroll-snap-align: start;
 }
 
-.depoimento__selo {
-  align-self: flex-start;
-  padding: 2px var(--esp-1);
-  border: 1px dashed var(--cor-cinza-texto);
+/* Traço amarelo no topo do cartão (detalhe da marca) */
+.depoimento::before {
+  content: "";
+  width: 40px;
+  height: 6px;
   border-radius: var(--raio-pilula);
-  color: var(--cor-cinza-texto);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  background-color: var(--cor-amarelo);
 }
 
 .depoimento__texto {
   margin: 0;
+  color: var(--cor-preto);
+  font-size: var(--fs-texto);
+  font-weight: 600;
+}
+
+/* Depoimento completo (abre e fecha sem JS) */
+.depoimento__completo-botao {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-pequeno);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.depoimento__completo-botao::-webkit-details-marker {
+  display: none;
+}
+
+.depoimento__completo[open] .depoimento__completo-botao {
+  margin-bottom: var(--esp-1);
+}
+
+/* Com um depoimento aberto, os outros cartões não esticam junto */
+.carrossel__trilha:has(.depoimento__completo[open]) {
+  align-items: start;
+}
+
+.depoimento__completo-texto {
+  display: grid;
+  gap: var(--esp-1);
   color: var(--cor-cinza-texto);
-  font-style: italic;
+  font-size: var(--fs-pequeno);
 }
 
 .depoimento__autor {
@@ -737,23 +769,28 @@
   align-items: center;
   gap: var(--esp-2);
   margin-top: auto;
+  padding-top: var(--esp-2);
+  border-top: 1px solid var(--cor-borda);
   font-size: var(--fs-pequeno);
 }
 
-.depoimento__foto {
+/* Inicial do nome do cão (até haver foto autorizada) */
+.depoimento__avatar {
   display: grid;
   place-items: center;
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
-  border: 2px dashed var(--cor-borda);
   border-radius: 50%;
-  background-color: var(--cor-cinza-claro);
-  padding: 6px;
+  background-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.depoimento__fonte {
   color: var(--cor-cinza-texto);
-  font-size: 0.625rem;
-  line-height: 1.2;
-  text-align: center;
 }
 
 .carrossel__controles {
@@ -865,9 +902,33 @@
    ========================================================================== */
 .faq {
   display: grid;
-  gap: var(--esp-2);
+  gap: var(--esp-5);
   max-width: 800px;
   margin-inline: auto;
+}
+
+.faq__grupo {
+  display: grid;
+  gap: var(--esp-2);
+}
+
+.faq__tema {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-1);
+  margin-bottom: var(--esp-1);
+}
+
+/* Pegada antes do nome do tema */
+.faq__tema::before {
+  content: "";
+  width: 0.9em;
+  height: 0.9em;
+  flex-shrink: 0;
+  background-color: currentColor;
+  opacity: 0.4;
+  -webkit-mask: var(--icone-pegada) center / contain no-repeat;
+  mask: var(--icone-pegada) center / contain no-repeat;
 }
 
 .faq__item {
@@ -903,6 +964,8 @@
 }
 
 .faq__resposta {
+  display: grid;
+  gap: var(--esp-2);
   padding: 0 var(--esp-3) var(--esp-3);
   color: var(--cor-cinza-texto);
 }
