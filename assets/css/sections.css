@@ -319,6 +319,134 @@
 }
 
 
+/* Vídeo "Conheça um pouco da minha história" (YouTube sob demanda na Parte 3) */
+.sobre__video {
+  max-width: calc(800px + 2 * var(--container-gutter));
+  margin-top: var(--esp-8);
+  text-align: center;
+}
+
+.sobre__video-titulo {
+  margin-bottom: var(--esp-3);
+}
+
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--raio-cartao);
+  background-color: var(--cor-preto);
+}
+
+/* Capa na identidade da marca: nenhum recurso do YouTube carrega antes do clique */
+.video__capa {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding-bottom: var(--esp-4); /* deixa espaço para a legenda no rodapé da capa */
+  color: var(--cor-branco);
+  text-decoration: none;
+}
+
+.video__capa::before {
+  content: "";
+  position: absolute;
+  right: -6%;
+  bottom: -18%;
+  width: 55%;
+  aspect-ratio: 1;
+  background-color: var(--cor-amarelo);
+  opacity: 0.08;
+  -webkit-mask: var(--icone-pegada) center / contain no-repeat;
+  mask: var(--icone-pegada) center / contain no-repeat;
+  transform: rotate(-18deg);
+}
+
+.video__capa img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video__play {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+  box-shadow: var(--sombra-flutuante);
+  transition: transform var(--transicao), background-color var(--transicao);
+}
+
+.video__play .icone {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  transform: translateX(2px);
+}
+
+.video__capa:hover .video__play,
+.video__capa:focus-visible .video__play {
+  background-color: var(--cor-amarelo-escuro);
+  transform: scale(1.08);
+}
+
+.video__legenda {
+  position: absolute;
+  left: var(--esp-2);
+  right: var(--esp-2);
+  bottom: var(--esp-2);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* No celular o título já aparece logo acima do vídeo (h3) */
+.video__titulo {
+  display: none;
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+
+.video__origem {
+  color: var(--cor-amarelo);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .video__capa {
+    padding-bottom: 0;
+  }
+
+  .video__play {
+    width: 72px;
+    height: 72px;
+  }
+
+  .video__play .icone {
+    width: 30px;
+    height: 30px;
+  }
+
+  .video__legenda {
+    left: var(--esp-3);
+    bottom: var(--esp-3);
+  }
+
+  .video__titulo {
+    display: block;
+  }
+}
+
+
 /* ==========================================================================
    Serviços (#servicos) — grade 1 / 2 / 3 colunas
    ========================================================================== */
@@ -497,10 +625,9 @@
 
 
 /* ==========================================================================
-   Resultados (#resultados) — fotos antes/depois + vídeos
+   Resultados (#resultados) — fotos antes/depois
    ========================================================================== */
-.resultados__grade,
-.videos__grade {
+.resultados__grade {
   display: grid;
   gap: var(--esp-3);
   margin: 0;
@@ -534,35 +661,8 @@
   font-weight: 600;
 }
 
-.resultados__subtitulo {
-  margin: var(--esp-8) 0 var(--esp-3);
-  text-align: center;
-}
-
-.video__miniatura {
-  position: relative;
-  gap: var(--esp-1);
-  aspect-ratio: 16 / 9;
-  align-content: center;
-}
-
-.video__play {
-  display: inline-grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: var(--cor-preto);
-  color: var(--cor-amarelo);
-}
-
-.video__play .icone {
-  fill: currentColor;
-  transform: translateX(2px);
-}
-
 .resultados__acao {
-  margin-top: var(--esp-4);
+  margin-top: var(--esp-5);
   text-align: center;
 }
 
@@ -570,15 +670,10 @@
   .resultados__grade {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .videos__grade {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 @media (min-width: 1024px) {
-  .resultados__grade,
-  .videos__grade {
+  .resultados__grade {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--esp-4);
   }

@@ -183,6 +183,22 @@
           </blockquote>
         </div>
       </div>
+
+      <div class="container sobre__video">
+        <h3 class="sobre__video-titulo">Conheça um pouco da minha história como adestrador</h3>
+        <!-- Sem JS, o link abre o vídeo no YouTube. Na Parte 3, o clique troca a capa pelo player
+             youtube-nocookie.com, carregado só nesse momento. Para usar a miniatura real,
+             salve-a como assets/img/sobre/video-historia.webp e coloque um <img> dentro do link. -->
+        <div class="video" data-youtube-id="eS8RAt--nu4">
+          <a class="video__capa" href="https://www.youtube.com/watch?v=eS8RAt--nu4" target="_blank" rel="noopener">
+            <span class="video__play"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-play"/></svg></span>
+            <span class="video__legenda">
+              <span class="video__titulo">Conheça um pouco da minha história</span>
+              <span class="video__origem">Assistir no YouTube<span class="visualmente-oculto"> (abre em nova aba)</span></span>
+            </span>
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- ===================== SERVIÇOS ===================== -->
@@ -419,40 +435,10 @@
           </li>
         </ul>
 
-        <h3 class="resultados__subtitulo">Vídeos do canal</h3>
-        <ul class="videos__grade">
-          <li>
-            <!-- data-youtube-id: preencher com o ID do vídeo (o player carrega só ao clicar — Parte 3) -->
-            <div class="video" data-youtube-id="">
-              <div class="video__miniatura placeholder placeholder--foto">
-                <span class="video__play"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-play"/></svg></span>
-                <span>Vídeo 1 do YouTube<br>[A CONFIRMAR: ID do vídeo 1]</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <!-- data-youtube-id: preencher com o ID do vídeo (o player carrega só ao clicar — Parte 3) -->
-            <div class="video" data-youtube-id="">
-              <div class="video__miniatura placeholder placeholder--foto">
-                <span class="video__play"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-play"/></svg></span>
-                <span>Vídeo 2 do YouTube<br>[A CONFIRMAR: ID do vídeo 2]</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <!-- data-youtube-id: preencher com o ID do vídeo (o player carrega só ao clicar — Parte 3) -->
-            <div class="video" data-youtube-id="">
-              <div class="video__miniatura placeholder placeholder--foto">
-                <span class="video__play"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-play"/></svg></span>
-                <span>Vídeo 3 do YouTube<br>[A CONFIRMAR: ID do vídeo 3]</span>
-              </div>
-            </div>
-          </li>
-        </ul>
         <div class="resultados__acao">
           <a class="btn btn--secundario" href="https://www.youtube.com/@petsmind.adestramento" data-link="youtube">
             <svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-youtube"/></svg>
-            <span>Ver mais no YouTube</span>
+            <span>Ver o canal no YouTube</span>
           </a>
         </div>
       </div>
