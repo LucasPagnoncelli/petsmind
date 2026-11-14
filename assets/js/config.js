@@ -11,7 +11,7 @@ window.PETSMIND_CONFIG = {
   // Alternativa: link de mensagem do WhatsApp Business (a mensagem é definida no app; não aceita texto extra).
   // Usado somente se whatsappNumero estiver vazio.
   whatsappLink: "https://api.whatsapp.com/message/PCRETT4YYIHWI1?autoload=1&app_absent=0",
-  email: "[A CONFIRMAR: e-mail]",
+  email: "",                             // a empresa não possui e-mail
   instagram: "https://www.instagram.com/petsmind.adestramento/",
   youtube: "https://www.youtube.com/@petsmind.adestramento",
   formspreeEndpoint: "https://formspree.io/f/XXXXXXXX", // [A CONFIRMAR: ID do Formspree]

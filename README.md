@@ -20,7 +20,7 @@ assets/
     base.css               reset, tipografia, utilitários e botões
     sections.css           estilo de cada seção (cabeçalho, hero, rodapé...)
   js/
-    config.js              dados de contato (WhatsApp, redes, e-mail...)
+    config.js              dados de contato (WhatsApp, redes sociais...)
     whatsapp.js            monta os links do WhatsApp a partir do config.js
     links.js               aplica os links de Instagram/YouTube do config.js
     menu.js                cabeçalho compacto ao rolar (menu mobile na Parte 3)
@@ -28,7 +28,7 @@ assets/
     logo/                  logo.svg (vetorial), logo-512.png, favicon.ico,
                            apple-touch-icon.png e logo-original.jpg (arquivo enviado)
     hero/ sobre/ ...       fotos (hero, sobre, resultados, depoimentos)
-  fonts/                   fontes .woff2 (Montserrat e Open Sans)
+  fonts/                   Montserrat e Open Sans (.woff2, licença OFL)
 ```
 
 ## Dados de contato

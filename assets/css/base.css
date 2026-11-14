@@ -6,8 +6,8 @@
 
 /* --------------------------------------------------------------------------
    Fontes locais (assets/fonts/*.woff2)
-   Os arquivos .woff2 ainda não estão no repositório: enquanto isso, o site
-   usa o fallback system-ui definido em --fonte-titulo / --fonte-texto.
+   Montserrat e Open Sans (Fontsource 5.3.0, subconjunto latino — cobre
+   todos os acentos do português). Licença SIL OFL 1.1: assets/fonts/OFL-*.txt
    -------------------------------------------------------------------------- */
 @font-face {
   font-family: "Montserrat";
