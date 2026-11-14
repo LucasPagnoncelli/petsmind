@@ -12,7 +12,7 @@ Este arquivo orienta o Claude Code na construção do site institucional da **Pe
 | Adestrador | Jhonatan D. |
 | Área de atendimento | Rio do Sul e região (Alto Vale do Itajaí, SC) |
 | Tipo de site | Landing page institucional (página única com seções) + páginas auxiliares |
-| Objetivo principal | Gerar contatos pelo WhatsApp e pelo formulário |
+| Objetivo principal | Gerar contatos pelo WhatsApp (o site não tem formulário) |
 | Idioma | Português (Brasil) — `<html lang="pt-BR">` |
 | Repositório | GitHub |
 | Hospedagem | GitHub Pages (site estático, sem back-end) |
@@ -25,7 +25,7 @@ Este arquivo orienta o Claude Code na construção do site institucional da **Pe
 | WhatsApp Business (alternativa) | https://api.whatsapp.com/message/PCRETT4YYIHWI1?autoload=1&app_absent=0 |
 | Instagram | https://www.instagram.com/petsmind.adestramento/ (@petsmind.adestramento) |
 | YouTube | https://www.youtube.com/@petsmind.adestramento |
-| E-mail | `[A CONFIRMAR]` |
+| E-mail | Não possui |
 
 Todos esses valores ficam em `assets/js/config.js` (seção 5) e são lidos de lá.
 
@@ -94,7 +94,6 @@ Próximo, confiante e respeitoso com o animal. Fala com o tutor como "você". Pr
 ```
 pets-mind-site/
 ├── index.html
-├── obrigado.html
 ├── politica-de-privacidade.html
 ├── 404.html
 ├── robots.txt
@@ -107,13 +106,12 @@ pets-mind-site/
 │   │   ├── base.css          (reset, tipografia, utilitários, botões)
 │   │   └── sections.css      (estilo de cada seção)
 │   ├── js/
-│   │   ├── config.js         (WhatsApp, e-mail, links — fonte única dos dados de contato)
+│   │   ├── config.js         (WhatsApp e links — fonte única dos dados de contato)
 │   │   ├── whatsapp.js       (monta os links wa.me)
 │   │   ├── menu.js
 │   │   ├── faq.js
 │   │   ├── carousel.js
 │   │   ├── lightbox.js
-│   │   ├── form.js
 │   │   └── cookies.js
 │   ├── img/
 │   │   ├── logo/             (logo.svg, logo-512.png, favicon.ico, apple-touch-icon.png)
@@ -146,10 +144,9 @@ window.PETSMIND_CONFIG = {
   // Alternativa: link de mensagem do WhatsApp Business (a mensagem é definida no app; não aceita texto extra).
   // Usado somente se whatsappNumero estiver vazio.
   whatsappLink: "https://api.whatsapp.com/message/PCRETT4YYIHWI1?autoload=1&app_absent=0",
-  email: "[A CONFIRMAR: e-mail]",
+  email: "",                             // a empresa não possui e-mail
   instagram: "https://www.instagram.com/petsmind.adestramento/",
   youtube: "https://www.youtube.com/@petsmind.adestramento",
-  formspreeEndpoint: "https://formspree.io/f/XXXXXXXX", // [A CONFIRMAR: ID do Formspree]
   ga4Id: ""                              // vazio = analytics desativado
 };
 ```
@@ -165,7 +162,7 @@ window.PETSMIND_CONFIG = {
 
 ## 6. Limitações do GitHub Pages (considerar sempre)
 
-- **Sem back-end:** o formulário envia via **Formspree** (`fetch` POST para `formspreeEndpoint`), com redirecionamento para `obrigado.html` no sucesso.
+- **Sem back-end:** o contato é feito somente pelo WhatsApp; o site não tem formulário.
 - **Sem redirecionamentos de servidor:** o `404.html` na raiz é usado automaticamente pelo GitHub Pages.
 - **HTTPS:** ativado em Settings → Pages → "Enforce HTTPS".
 - **Domínio próprio:** arquivo `CNAME` na raiz com o domínio (ex.: `petsmindadestramento.com.br`) + DNS configurado no Registro.br.
@@ -184,7 +181,7 @@ Tarefas:
 2. Criar `variables.css` (cores, fontes, escala de espaçamento em múltiplos de 8 px, larguras de container: 1200 px máx.), `base.css` (reset moderno, tipografia, `.container`, botões `.btn--primario` amarelo/preto, `.btn--secundario` contorno, `.btn--whatsapp`) e `sections.css` (vazio, com comentários por seção).
 3. Criar `index.html` com `<head>` completo (charset, viewport, title e description provisórios, favicon, CSS) e o esqueleto de todas as seções com `id`s: `inicio`, `sobre`, `servicos`, `como-funciona`, `resultados`, `depoimentos`, `atendimento`, `duvidas`, `contato`.
 4. **Cabeçalho fixo:** logo (link para `#inicio`), menu com âncoras (Início · Sobre · Serviços · Como funciona · Depoimentos · Dúvidas · Contato), botão "Agendar avaliação" (WhatsApp). O cabeçalho encolhe ao rolar.
-5. **Rodapé:** logo, frase curta, links do menu, ícones com link para Instagram e YouTube (de `config.js`, com `aria-label`), WhatsApp (47) 8855-0632, "Rio do Sul e região — SC", `[A CONFIRMAR: CNPJ/MEI]`, link para Política de Privacidade, "© 2026 Pet's Mind Adestramento".
+5. **Rodapé:** logo, frase curta, links do menu, ícones com link para Instagram e YouTube (de `config.js`, com `aria-label`), WhatsApp (47) 8855-0632, "Rio do Sul e região — SC", link para Política de Privacidade, "© 2026 Pet's Mind Adestramento".
 6. **Botão flutuante de WhatsApp** (canto inferior direito, verde `--cor-whatsapp`, com `aria-label`).
 7. Criar `config.js` e `whatsapp.js` (seção 5).
 8. Rolagem suave com compensação da altura do cabeçalho (`scroll-margin-top` nas seções).
@@ -238,7 +235,7 @@ Tarefas (estilos em `sections.css`, um bloco comentado por seção):
    - Cães adultos ou idosos ainda aprendem?
    - Quais cidades vocês atendem?
    - Quais as formas de pagamento?
-9. **Contato** (`#contato`) — botão grande de WhatsApp com o número (47) 8855-0632 visível, links para Instagram e YouTube + formulário (apenas marcação e estilo; o envio vem na Parte 3): nome*, WhatsApp*, cidade*, nome do cão, idade do cão, raça/porte, "Qual o principal desafio?"*, checkbox de consentimento LGPD* (desmarcado por padrão) com link para a política. Horário de atendimento `[A CONFIRMAR]`.
+9. **Contato** (`#contato`) — botão grande de WhatsApp com o número (47) 8855-0632 visível, links para Instagram e YouTube e horário de atendimento (a combinar com o adestrador). Sem formulário.
 
 Critérios de aceite:
 - [ ] Todas as 9 seções com layout final em 360, 768 e 1280 px.
@@ -251,9 +248,9 @@ Commit sugerido: `feat: seções de conteúdo da página inicial`.
 
 ---
 
-### PARTE 3 — Interatividade, formulário e páginas auxiliares
+### PARTE 3 — Interatividade e páginas auxiliares
 
-**Objetivo:** deixar tudo funcional: menu mobile, carrossel, lightbox, formulário com envio real, cookies e páginas extras.
+**Objetivo:** deixar tudo funcional: menu mobile, carrossel, lightbox, cookies e páginas extras.
 
 Tarefas:
 1. **`menu.js`** — menu hambúrguer em tela cheia no mobile; abre/fecha por toque e Esc; fecha ao escolher um item; `aria-expanded` atualizado; trava a rolagem do fundo com o menu aberto.
@@ -262,20 +259,17 @@ Tarefas:
 4. **`lightbox.js`** — ampliar fotos de resultados; navegação por setas, fecha com Esc ou clique fora; foco preso dentro do lightbox enquanto aberto e devolvido ao fechar.
 5. **Vídeos do YouTube sob demanda** — em `#resultados`, cada vídeo aparece primeiro como miniatura com botão de play (imagem local ou `i.ytimg.com`); o iframe `youtube-nocookie.com/embed/<ID>` só é inserido ao clicar. Nenhum script do YouTube carrega antes disso.
 6. **Mapa sob demanda** — iframe do Google Maps centrado em Rio do Sul, inserido via `IntersectionObserver` só quando `#atendimento` aparece na tela.
-7. **`form.js`** — validação no cliente (campos obrigatórios, máscara `(47) 9XXXX-XXXX`, consentimento obrigatório), mensagens de erro acessíveis (`aria-live`), envio via `fetch` para o Formspree, campo honeypot anti-spam (oculto) e redirecionamento para `obrigado.html` em caso de sucesso; mensagem de erro amigável em caso de falha, com sugestão de chamar no WhatsApp.
-8. **`obrigado.html`** — mesma identidade, mensagem de agradecimento, botão para o WhatsApp e para voltar ao início; `<meta name="robots" content="noindex">`.
-9. **`politica-de-privacidade.html`** — estrutura com: responsável (Jhonatan D. / Pet's Mind), dados coletados, finalidade, tempo de guarda, compartilhamento (GitHub Pages, Formspree, Google, YouTube), direitos do titular e e-mail para solicitar exclusão. Texto marcado com aviso de que precisa de revisão pelo responsável.
-10. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Atenção: no GitHub Pages o 404 pode ser servido em qualquer URL; use caminhos que funcionem a partir da raiz do site (ex.: definir `<base href>` com o caminho do repositório ou usar URLs absolutas do domínio final).
-11. **`cookies.js` + GA4** — se `ga4Id` estiver preenchido, exibe banner simples (Aceitar / Recusar); o script do GA4 só carrega após aceitar; escolha salva em `localStorage` (com `try/catch`). Eventos: `clique_whatsapp` (com o serviço, se houver) e `envio_formulario`.
+7. **`politica-de-privacidade.html`** — estrutura com: responsável (Jhonatan D. / Pet's Mind), dados coletados, finalidade, tempo de guarda, compartilhamento (GitHub Pages, Google, YouTube), direitos do titular e WhatsApp para solicitar exclusão. Texto marcado com aviso de que precisa de revisão pelo responsável.
+8. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Atenção: no GitHub Pages o 404 pode ser servido em qualquer URL; use caminhos que funcionem a partir da raiz do site (ex.: definir `<base href>` com o caminho do repositório ou usar URLs absolutas do domínio final).
+9. **`cookies.js` + GA4** — se `ga4Id` estiver preenchido, exibe banner simples (Aceitar / Recusar); o script do GA4 só carrega após aceitar; escolha salva em `localStorage` (com `try/catch`). Evento: `clique_whatsapp` (com o serviço, se houver).
 
 Critérios de aceite:
 - [ ] Menu, FAQ, carrossel e lightbox funcionam com mouse, toque e teclado.
-- [ ] Formulário bloqueia envio inválido, mostra erros legíveis e, com endpoint válido, chega no e-mail e leva a `obrigado.html`.
 - [ ] O mapa não carrega até a seção aparecer, e nenhum recurso do YouTube carrega antes do clique no vídeo (verificar na aba Network).
 - [ ] Sem `ga4Id`, nenhum banner e nenhum script do Google é carregado.
-- [ ] As 3 páginas auxiliares seguem a identidade visual e têm cabeçalho/rodapé consistentes.
+- [ ] As 2 páginas auxiliares seguem a identidade visual e têm cabeçalho/rodapé consistentes.
 
-Commit sugerido: `feat: interatividade, formulário Formspree e páginas auxiliares`.
+Commit sugerido: `feat: interatividade e páginas auxiliares`.
 
 ---
 
@@ -292,9 +286,9 @@ Tarefas:
 2. **Dados estruturados (JSON-LD)** no `index.html`:
    - `ProfessionalService` (ou `LocalBusiness`) com nome, telefone `+55-47-8855-0632`, `areaServed` (cidades), horário, logo, `sameAs` (Instagram e YouTube do `config.js`) — valores não confirmados ficam com `[A CONFIRMAR]` e um comentário avisando que devem ser preenchidos antes do lançamento.
    - `FAQPage` com as perguntas da seção Dúvidas.
-3. **`sitemap.xml`** (index e política) e **`robots.txt`** (permitir tudo, bloquear `obrigado.html`, apontar para o sitemap). Usar a URL final do site — se ainda não houver domínio, usar `https://<usuario>.github.io/<repo>/` e deixar comentário para trocar.
+3. **`sitemap.xml`** (index e política) e **`robots.txt`** (permitir tudo e apontar para o sitemap). Usar a URL final do site — se ainda não houver domínio, usar `https://<usuario>.github.io/<repo>/` e deixar comentário para trocar.
 4. **Desempenho:** minimizar CSS/JS crítico, `preload` da fonte do H1 e da imagem do hero, `fetchpriority="high"` na imagem do hero, scripts com `defer`, imagens em WebP com tamanhos adequados. Meta: PageSpeed mobile ≥ 90, LCP < 2,5 s, página inicial < 1,5 MB.
-5. **Revisão de acessibilidade:** rodar Lighthouse; corrigir contraste, ordem de headings, rótulos de formulário, `alt` e foco. Meta: Acessibilidade ≥ 95.
+5. **Revisão de acessibilidade:** rodar Lighthouse; corrigir contraste, ordem de headings, `alt` e foco. Meta: Acessibilidade ≥ 95.
 6. **Publicação no GitHub Pages:**
    - Garantir que `index.html` está na raiz da branch `main`.
    - Settings → Pages → Source: "Deploy from a branch" → Branch `main` / pasta `/ (root)`.

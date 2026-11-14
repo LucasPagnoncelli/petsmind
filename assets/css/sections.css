@@ -806,8 +806,10 @@
 
 @media (min-width: 1024px) {
   .carrossel__trilha {
-    grid-auto-columns: calc((100% - 2 * var(--esp-4)) / 3);
+    grid-auto-columns: calc((100% - var(--esp-4)) / 2);
     gap: var(--esp-4);
+    max-width: 1000px;
+    margin-inline: auto;
   }
 }
 
@@ -929,15 +931,20 @@
 
 
 /* ==========================================================================
-   Contato (#contato) — WhatsApp + formulário (envio na Parte 3)
+   Contato (#contato) — WhatsApp, redes sociais e horário
    ========================================================================== */
-.contato__grade {
-  display: grid;
-  gap: var(--esp-6);
-  align-items: start;
+.contato__conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.contato__info .secao__texto {
+.contato__conteudo .secao__titulo::after {
+  margin-inline: auto;
+}
+
+.contato__conteudo .secao__texto {
   margin-bottom: var(--esp-4);
 }
 
@@ -964,9 +971,11 @@
 }
 
 .contato__lista {
-  display: grid;
-  gap: var(--esp-2);
-  margin: var(--esp-4) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--esp-1) var(--esp-4);
+  margin: var(--esp-5) 0 0;
   padding: 0;
   list-style: none;
 }
@@ -975,7 +984,7 @@
 .contato__item {
   display: inline-flex;
   align-items: center;
-  gap: var(--esp-2);
+  gap: var(--esp-1);
   min-height: 44px;
   color: var(--cor-branco);
 }
@@ -997,114 +1006,6 @@
 
 .contato__item {
   color: var(--cor-texto-claro-secundario);
-}
-
-/* Cartão do formulário (branco sobre o fundo preto) */
-.cartao-formulario {
-  padding: var(--esp-4) var(--esp-3);
-  border-radius: var(--raio-cartao);
-  background-color: var(--cor-branco);
-  color: var(--cor-preto);
-}
-
-.cartao-formulario__titulo {
-  margin-bottom: var(--esp-1);
-}
-
-.cartao-formulario__texto {
-  margin-bottom: var(--esp-3);
-  color: var(--cor-cinza-texto);
-}
-
-.formulario__aviso {
-  margin-bottom: var(--esp-2);
-  color: var(--cor-cinza-texto);
-  font-size: var(--fs-pequeno);
-}
-
-.formulario__grade {
-  display: grid;
-  gap: var(--esp-2);
-}
-
-.campo {
-  display: grid;
-  gap: 6px;
-}
-
-.campo__rotulo {
-  font-family: var(--fonte-titulo);
-  font-size: var(--fs-pequeno);
-  font-weight: 600;
-}
-
-.campo__obrigatorio {
-  color: var(--cor-erro);
-}
-
-.campo__entrada {
-  width: 100%;
-  min-height: 48px;
-  padding: 10px 14px;
-  border: 1px solid var(--cor-campo-borda);
-  border-radius: 8px;
-  background-color: var(--cor-branco);
-  color: var(--cor-preto);
-  font-size: 1rem; /* 16px evita o zoom automático no iPhone */
-}
-
-.campo__entrada::placeholder {
-  color: var(--cor-placeholder);
-  opacity: 1;
-}
-
-.campo__entrada:focus-visible {
-  border-color: var(--cor-preto);
-}
-
-.campo__entrada--texto {
-  min-height: 112px;
-  resize: vertical;
-}
-
-.campo--checkbox {
-  grid-template-columns: auto 1fr;
-  align-items: start;
-  gap: var(--esp-1);
-  font-size: var(--fs-pequeno);
-}
-
-.campo__checkbox {
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  accent-color: var(--cor-preto);
-}
-
-.formulario__enviar {
-  width: 100%;
-  margin-top: var(--esp-3);
-}
-
-@media (min-width: 768px) {
-  .cartao-formulario {
-    padding: var(--esp-5);
-  }
-
-  .formulario__grade {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .campo--largo {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (min-width: 1024px) {
-  .contato__grade {
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: var(--esp-8);
-  }
 }
 
 

@@ -14,6 +14,5 @@ window.PETSMIND_CONFIG = {
   email: "",                             // a empresa não possui e-mail
   instagram: "https://www.instagram.com/petsmind.adestramento/",
   youtube: "https://www.youtube.com/@petsmind.adestramento",
-  formspreeEndpoint: "https://formspree.io/f/XXXXXXXX", // [A CONFIRMAR: ID do Formspree]
   ga4Id: ""                              // vazio = analytics desativado
 };

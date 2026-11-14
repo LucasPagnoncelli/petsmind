@@ -17,9 +17,6 @@
   /* ---------- Cores derivadas (apoio) ---------- */
   --cor-texto-claro-secundario: #CFCFCF; /* texto secundário sobre fundo preto (contraste 12:1) */
   --cor-preto-suave: #1E1E1E;            /* cartões e blocos sobre fundo preto */
-  --cor-campo-borda: #767676;            /* borda de campos de formulário (contraste 4,5:1) */
-  --cor-placeholder: #6B6B6B;            /* texto de exemplo dentro dos campos (contraste 5,3:1) */
-  --cor-erro: #B3261E;                   /* mensagens de erro do formulário (contraste 6,5:1) */
   --cor-borda: #DDDDD8;                  /* bordas sutis sobre fundo claro */
   --cor-borda-escura: #333333;           /* bordas sutis sobre fundo preto */
   --cor-sombra: rgba(17, 17, 17, 0.18);  /* sombras */
