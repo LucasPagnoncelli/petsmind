@@ -273,12 +273,49 @@ a {
   color: var(--cor-branco);
 }
 
+/* Cabeçalho de seção: título + trilha de pegadas + texto de apoio */
+.secao__cabecalho {
+  margin-bottom: var(--esp-5);
+}
+
+.secao__cabecalho--centro {
+  text-align: center;
+}
+
+.secao__cabecalho--centro .secao__texto,
+.secao__cabecalho--centro .secao__titulo::after {
+  margin-inline: auto;
+}
+
 .secao__titulo {
   margin-bottom: var(--esp-3);
 }
 
+/* Trilha de pegadas sob o título (divisor decorativo, baixa opacidade) */
+.secao__titulo::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 16px;
+  margin-top: var(--esp-2);
+  background-color: currentColor;
+  opacity: 0.3;
+  -webkit-mask: var(--icone-pegada) left center / 16px 16px space no-repeat;
+  mask: var(--icone-pegada) left center / 16px 16px space no-repeat;
+  -webkit-mask-repeat: space no-repeat;
+  mask-repeat: space no-repeat;
+}
+
+.secao__cabecalho .secao__titulo {
+  margin-bottom: var(--esp-2);
+}
+
 .secao--escura .secao__titulo {
   color: var(--cor-amarelo);
+}
+
+.secao--escura .secao__titulo::after {
+  opacity: 0.6;
 }
 
 .secao__texto {
@@ -288,6 +325,72 @@ a {
 
 .secao--escura .secao__texto {
   color: var(--cor-texto-claro-secundario);
+}
+
+/* Lista com pegadas como marcador */
+.lista-pegadas {
+  display: grid;
+  gap: var(--esp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-pegadas > li {
+  position: relative;
+  padding-left: var(--esp-4);
+}
+
+.lista-pegadas > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  opacity: 0.4;
+  -webkit-mask: var(--icone-pegada) center / contain no-repeat;
+  mask: var(--icone-pegada) center / contain no-repeat;
+}
+
+.secao--escura .lista-pegadas > li::before {
+  background-color: var(--cor-amarelo);
+  opacity: 0.8;
+}
+
+/* Cartão base */
+.cartao {
+  border-radius: var(--raio-cartao);
+  background-color: var(--cor-branco);
+  box-shadow: var(--sombra-cartao);
+}
+
+.secao--clara .cartao {
+  background-color: var(--cor-cinza-claro);
+  box-shadow: none;
+}
+
+.secao--escura .cartao {
+  background-color: var(--cor-preto-suave);
+  box-shadow: none;
+}
+
+/* Círculo amarelo com ícone preto */
+.icone-circulo {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+  flex-shrink: 0;
+}
+
+.icone-circulo .icone {
+  width: 26px;
+  height: 26px;
 }
 
 /* Placeholder neutro para conteúdo ainda não produzido */
@@ -311,8 +414,14 @@ a {
 
 .secao--escura .placeholder {
   border-color: var(--cor-borda-escura);
-  background-color: transparent;
+  background-color: var(--cor-preto-suave);
   color: var(--cor-texto-claro-secundario);
+}
+
+/* Placeholder de foto: proporção fixa, sem margem extra */
+.placeholder--foto {
+  min-height: 0;
+  margin-top: 0;
 }
 
 /* --------------------------------------------------------------------------

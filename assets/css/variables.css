@@ -16,6 +16,10 @@
 
   /* ---------- Cores derivadas (apoio) ---------- */
   --cor-texto-claro-secundario: #CFCFCF; /* texto secundário sobre fundo preto (contraste 12:1) */
+  --cor-preto-suave: #1E1E1E;            /* cartões e blocos sobre fundo preto */
+  --cor-campo-borda: #767676;            /* borda de campos de formulário (contraste 4,5:1) */
+  --cor-placeholder: #6B6B6B;            /* texto de exemplo dentro dos campos (contraste 5,3:1) */
+  --cor-erro: #B3261E;                   /* mensagens de erro do formulário (contraste 6,5:1) */
   --cor-borda: #DDDDD8;                  /* bordas sutis sobre fundo claro */
   --cor-borda-escura: #333333;           /* bordas sutis sobre fundo preto */
   --cor-sombra: rgba(17, 17, 17, 0.18);  /* sombras */
@@ -66,6 +70,9 @@
   --raio-pilula: 999px;
   --sombra-cartao: 0 4px 16px var(--cor-sombra);
   --sombra-flutuante: 0 6px 20px var(--cor-sombra-forte);
+
+  /* Pegada decorativa (usada como máscara: a cor vem de background-color) */
+  --icone-pegada: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='4.5' cy='10' r='2.3'/%3E%3Ccircle cx='8.8' cy='5' r='2.4'/%3E%3Ccircle cx='15.2' cy='5' r='2.4'/%3E%3Ccircle cx='19.5' cy='10' r='2.3'/%3E%3Cpath d='M12 10.5c-3.2 0-6.3 4.2-6.3 6.9 0 2.1 1.7 3.1 3.3 3.1 1.3 0 1.9-.7 3-.7s1.7.7 3 .7c1.6 0 3.3-1 3.3-3.1 0-2.7-3.1-6.9-6.3-6.9z'/%3E%3C/svg%3E");
 
   --transicao: 200ms ease;
   --z-cabecalho: 100;
