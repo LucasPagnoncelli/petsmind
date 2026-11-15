@@ -13,6 +13,7 @@ As regras completas de construção estão em [`CLAUDE.md`](CLAUDE.md).
 
 ```
 index.html                 página inicial
+404.html                   página de "não encontrado" (servida pelo GitHub Pages)
 .nojekyll                  desativa o Jekyll no GitHub Pages
 assets/
   css/
@@ -23,7 +24,12 @@ assets/
     config.js              dados de contato (WhatsApp, redes sociais...)
     whatsapp.js            monta os links do WhatsApp a partir do config.js
     links.js               aplica os links de Instagram/YouTube do config.js
-    menu.js                cabeçalho compacto ao rolar (menu mobile na Parte 3)
+    menu.js                cabeçalho compacto ao rolar e menu hambúrguer no celular
+    faq.js                 animação das dúvidas frequentes
+    carousel.js            botões e indicadores do carrossel de depoimentos
+    video.js               vídeo do YouTube só carrega ao clicar
+    mapa.js                mapa só carrega quando a seção aparece
+    cookies.js             aviso de cookies e Google Analytics (desligado sem ga4Id)
   img/
     logo/                  logo.svg (vetorial), logo-512.png, favicon.ico,
                            apple-touch-icon.png e logo-original.jpg (arquivo enviado)

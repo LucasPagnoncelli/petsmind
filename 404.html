@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    O GitHub Pages serve este arquivo em QUALQUER endereço que não existe
+    (ex.: /petsmind/qualquer/coisa). A <base> abaixo faz os caminhos relativos
+    partirem sempre da raiz do site, de qualquer nível.
+    - GitHub Pages (usuario.github.io/petsmind/): base "/petsmind/" (escrita aqui,
+      para o navegador já baixar CSS e imagens do lugar certo).
+    - Domínio próprio ou servidor local: o script troca para "/".
+      Ao configurar o domínio próprio (Parte 4), troque também aqui por "/".
+  -->
+  <base href="/petsmind/">
+  <script>
+    (function () {
+      document.documentElement.classList.add("js");
+      var base = document.querySelector("base");
+      if (location.protocol === "file:") {
+        base.remove(); // aberto direto do computador: caminhos relativos ao próprio arquivo
+        return;
+      }
+      if (!/\.github\.io$/.test(location.hostname)) base.href = "/";
+      // Com <base>, um link "#conteudo" apontaria para a página inicial: mantém na própria página
+      document.addEventListener("DOMContentLoaded", function () {
+        var aqui = location.href.split("#")[0];
+        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+          link.href = aqui + link.getAttribute("href");
+        });
+      });
+    })();
+  </script>
+  <title>Página não encontrada | Pet's Mind Adestramento</title>
+  <meta name="description" content="Esta página não existe. Volte para o início do site da Pet's Mind Adestramento ou fale com o Jhonatan pelo WhatsApp.">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" href="assets/img/logo/favicon.ico" sizes="32x32">
+  <link rel="icon" href="assets/img/logo/logo.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/sections.css">
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/whatsapp.js" defer></script>
+  <script src="assets/js/links.js" defer></script>
+  <script src="assets/js/menu.js" defer></script>
+  <script src="assets/js/cookies.js" defer></script>
+</head>
+<body>
+  <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="cabecalho" data-cabecalho>
+    <div class="container cabecalho__interno">
+      <a class="logo cabecalho__logo" href="./#inicio">
+        <img class="logo__img" src="assets/img/logo/logo.svg" alt="Pet's Mind Adestramento — voltar ao início" width="56" height="56">
+      </a>
+
+      <nav class="cabecalho__nav" id="menu-principal" aria-label="Menu principal" data-menu>
+        <ul class="nav__lista">
+          <li><a class="nav__link" href="./#inicio">Início</a></li>
+          <li><a class="nav__link" href="./#sobre">Sobre</a></li>
+          <li><a class="nav__link" href="./#servicos">Serviços</a></li>
+          <li><a class="nav__link" href="./#como-funciona">Como funciona</a></li>
+          <li><a class="nav__link" href="./#depoimentos">Depoimentos</a></li>
+          <li><a class="nav__link" href="./#duvidas">Dúvidas</a></li>
+          <li><a class="nav__link" href="./#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--primario btn--pequeno cabecalho__cta" href="./#contato" data-whatsapp data-servico="Avaliação comportamental">Agendar avaliação</a>
+
+      <!-- Menu hambúrguer (celular/tablet): ativado pelo menu.js; sem JS, fica escondido -->
+      <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-botao hidden>
+        <span class="menu-botao__icone" aria-hidden="true"></span>
+        <span class="visualmente-oculto" data-menu-rotulo>Abrir menu</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao secao--escura erro404" aria-labelledby="erro404-titulo">
+      <div class="container erro404__conteudo">
+        <span class="erro404__pegada" aria-hidden="true"></span>
+        <p class="erro404__codigo">Erro 404</p>
+        <h1 class="erro404__titulo" id="erro404-titulo">Esse caminho o faro não encontrou</h1>
+        <p class="erro404__texto">A página que você procurou não existe ou mudou de endereço. Volte para o início ou fale direto com o Jhonatan pelo WhatsApp.</p>
+        <div class="botoes erro404__botoes">
+          <a class="btn btn--primario" href="./">Voltar ao início</a>
+          <a class="btn btn--secundario" href="./#contato" data-whatsapp>
+            <svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5Z"/></svg>
+            <span>Falar no WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <div class="rodape__marca">
+        <a class="logo" href="./#inicio">
+          <img class="logo__img" src="assets/img/logo/logo.svg" alt="Pet's Mind Adestramento — voltar ao início" width="72" height="72" loading="lazy">
+        </a>
+        <p class="rodape__frase">Educação com reforço positivo para cães e tutores de Rio do Sul e região.</p>
+        <ul class="rodape__sociais">
+          <li>
+            <a class="rodape__social" href="https://www.instagram.com/petsmind.adestramento/" data-link="instagram" aria-label="Instagram da Pet's Mind (@petsmind.adestramento)">
+              <svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="rodape__social" href="https://www.youtube.com/@petsmind.adestramento" data-link="youtube" aria-label="Canal da Pet's Mind no YouTube">
+              <svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <nav aria-label="Menu do rodapé">
+        <h2 class="rodape__titulo">Navegação</h2>
+        <ul class="rodape__lista">
+          <li><a class="rodape__link" href="./#inicio">Início</a></li>
+          <li><a class="rodape__link" href="./#sobre">Sobre</a></li>
+          <li><a class="rodape__link" href="./#servicos">Serviços</a></li>
+          <li><a class="rodape__link" href="./#como-funciona">Como funciona</a></li>
+          <li><a class="rodape__link" href="./#depoimentos">Depoimentos</a></li>
+          <li><a class="rodape__link" href="./#duvidas">Dúvidas</a></li>
+          <li><a class="rodape__link" href="./#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="rodape__titulo">Contato</h2>
+        <ul class="rodape__lista">
+          <li>
+            <a class="rodape__link" href="./#contato" data-whatsapp>
+              <svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5Z"/></svg>
+              <span>WhatsApp <span data-whatsapp-exibicao>(47) 8855-0632</span></span>
+            </a>
+          </li>
+          <li class="rodape__item">
+            <svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Rio do Sul e região — SC</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rodape__base">
+      <div class="container rodape__base-interno">
+        <p>© 2026 Pet's Mind Adestramento</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a class="whatsapp-flutuante" href="./#contato" data-whatsapp aria-label="Conversar com a Pet's Mind no WhatsApp">
+    <svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5Z"/></svg>
+  </a>
+</body>
+</html>

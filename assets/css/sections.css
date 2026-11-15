@@ -149,6 +149,170 @@
 
 
 /* ==========================================================================
+   Menu hambúrguer (celular/tablet, somente com JS — menu.js)
+   Sem JS, vale a linha de menu com rolagem horizontal definida acima.
+   ========================================================================== */
+.menu-botao {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cor-branco);
+}
+
+.menu-botao[hidden] {
+  display: none;
+}
+
+/* Três traços que viram um "X" quando o menu abre */
+.menu-botao__icone,
+.menu-botao__icone::before,
+.menu-botao__icone::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  transition: transform var(--transicao), background-color var(--transicao);
+}
+
+.menu-botao__icone {
+  position: relative;
+}
+
+.menu-botao__icone::before,
+.menu-botao__icone::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.menu-botao__icone::before {
+  top: -7px;
+}
+
+.menu-botao__icone::after {
+  top: 7px;
+}
+
+.menu-botao[aria-expanded="true"] .menu-botao__icone {
+  background-color: transparent;
+}
+
+.menu-botao[aria-expanded="true"] .menu-botao__icone::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-botao[aria-expanded="true"] .menu-botao__icone::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.js .cabecalho__interno {
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: var(--cabecalho-linha);
+  grid-template-areas: "logo cta botao";
+}
+
+.js .menu-botao {
+  display: inline-grid;
+  grid-area: botao;
+}
+
+/* Painel em tela cheia, logo abaixo da linha do cabeçalho */
+.js .cabecalho__nav {
+  position: fixed;
+  inset: var(--cabecalho-linha) 0 0 0;
+  overflow-y: auto;
+  border-top: 1px solid var(--cor-borda-escura);
+  background-color: var(--cor-preto);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--transicao), visibility var(--transicao);
+}
+
+.menu-aberto .cabecalho__nav {
+  visibility: visible;
+  opacity: 1;
+}
+
+.js .nav__lista {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  height: auto;
+  padding: var(--esp-3) var(--container-gutter) var(--esp-6);
+  overflow: visible;
+  white-space: normal;
+}
+
+.js .nav__link {
+  width: 100%;
+  min-height: 56px;
+  padding: 0;
+  border-bottom: 1px solid var(--cor-borda-escura);
+  border-radius: 0;
+  font-size: var(--fs-h3);
+}
+
+/* Trava a rolagem da página com o menu aberto */
+.menu-aberto,
+.menu-aberto body {
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .js .cabecalho__interno {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "logo nav cta";
+  }
+
+  .js .menu-botao {
+    display: none;
+  }
+
+  .js .cabecalho__nav {
+    position: static;
+    overflow: visible;
+    border-top: 0;
+    background-color: transparent;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .js .nav__lista {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--esp-1);
+    height: 100%;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  .js .nav__link {
+    width: auto;
+    min-height: 40px;
+    padding: 0 var(--esp-1);
+    border-bottom: 0;
+    border-radius: var(--raio-pilula);
+    font-size: 0.9375rem; /* 15px */
+  }
+}
+
+@media (min-width: 1200px) {
+  .js .nav__lista {
+    gap: var(--esp-2);
+  }
+}
+
+
+/* ==========================================================================
    Hero (#inicio) — fundo preto com detalhe amarelo
    ========================================================================== */
 .hero {
@@ -442,6 +606,14 @@
   font-family: var(--fonte-titulo);
   font-size: var(--fs-h3);
   font-weight: 700;
+}
+
+.video__player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .video__origem {
@@ -789,10 +961,46 @@
   color: var(--cor-preto);
 }
 
-.carrossel__botao:hover,
+.carrossel__botao:hover:not(:disabled),
 .carrossel__botao:focus-visible {
   background-color: var(--cor-preto);
   color: var(--cor-branco);
+}
+
+.carrossel__botao:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.carrossel__indicadores {
+  display: flex;
+  gap: var(--esp-1);
+}
+
+/* Área de toque de 24px com um ponto de 10px no centro */
+.carrossel__indicador {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.carrossel__indicador::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--cor-preto);
+  border-radius: 50%;
+  transition: background-color var(--transicao), transform var(--transicao);
+}
+
+.carrossel__indicador[aria-current="true"]::before {
+  background-color: var(--cor-preto);
+  transform: scale(1.2);
 }
 
 @media (min-width: 768px) {
@@ -846,6 +1054,17 @@
 .mapa {
   aspect-ratio: 4 / 3;
   overflow: hidden;
+}
+
+.mapa--carregado {
+  padding: 0;
+  border: 0;
+}
+
+.mapa iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 @media (min-width: 1024px) {
@@ -1010,6 +1229,68 @@
 
 
 /* ==========================================================================
+   Página 404 (404.html)
+   ========================================================================== */
+.erro404 {
+  display: grid;
+  align-items: center;
+  min-height: 80vh;
+  padding-top: calc(var(--altura-cabecalho) + var(--esp-6));
+}
+
+.erro404__conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Pegada grande (detalhe da marca) */
+.erro404__pegada {
+  width: 96px;
+  height: 96px;
+  margin-bottom: var(--esp-3);
+  background-color: var(--cor-amarelo);
+  -webkit-mask: var(--icone-pegada) center / contain no-repeat;
+  mask: var(--icone-pegada) center / contain no-repeat;
+  transform: rotate(-12deg);
+}
+
+.erro404__codigo {
+  margin-bottom: var(--esp-1);
+  color: var(--cor-texto-claro-secundario);
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-pequeno);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.erro404__titulo {
+  max-width: 18ch;
+  margin-bottom: var(--esp-2);
+  color: var(--cor-amarelo);
+}
+
+.erro404__texto {
+  max-width: 52ch;
+  margin-bottom: var(--esp-4);
+  color: var(--cor-texto-claro-secundario);
+}
+
+.erro404__botoes {
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .erro404__pegada {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+
+/* ==========================================================================
    Rodapé
    ========================================================================== */
 .rodape {
@@ -1130,6 +1411,60 @@
 @media (min-width: 768px) {
   .rodape__grade {
     grid-template-columns: 1.5fr 1fr 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   Aviso de cookies (só aparece se o GA4 estiver configurado — cookies.js)
+   Fica à esquerda do botão flutuante do WhatsApp, sem cobri-lo.
+   ========================================================================== */
+.cookies {
+  position: fixed;
+  left: var(--esp-2);
+  right: calc(var(--esp-2) + 56px + var(--esp-2));
+  bottom: var(--esp-2);
+  z-index: var(--z-flutuante);
+  border: 1px solid var(--cor-borda-escura);
+  border-radius: var(--raio-cartao);
+  background-color: var(--cor-preto);
+  color: var(--cor-branco);
+  box-shadow: var(--sombra-flutuante);
+}
+
+.cookies__interno {
+  display: grid;
+  gap: var(--esp-2);
+  padding: var(--esp-2);
+}
+
+.cookies__texto {
+  font-size: var(--fs-pequeno);
+}
+
+.cookies__botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-1);
+}
+
+.cookies .btn--secundario {
+  border-color: var(--cor-branco);
+  color: var(--cor-branco);
+}
+
+.cookies .btn--secundario:hover,
+.cookies .btn--secundario:focus-visible {
+  background-color: var(--cor-branco);
+  color: var(--cor-preto);
+}
+
+@media (min-width: 768px) {
+  .cookies {
+    right: auto;
+    left: var(--esp-3);
+    bottom: var(--esp-3);
+    max-width: 560px;
   }
 }
 

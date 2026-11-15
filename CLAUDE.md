@@ -252,7 +252,7 @@ Critérios de aceite:
 
 ---
 
-### PARTE 3 — Interatividade e página 404
+### PARTE 3 — Interatividade e página 404 ✅ concluída
 
 **Objetivo:** deixar tudo funcional: menu mobile, carrossel, vídeo e mapa sob demanda, cookies e página 404.
 
@@ -266,10 +266,10 @@ Tarefas:
 7. **`cookies.js` + GA4** — se `ga4Id` estiver preenchido, exibe banner simples (Aceitar / Recusar); o script do GA4 só carrega após aceitar; escolha salva em `localStorage` (com `try/catch`). Evento: `clique_whatsapp` (com o serviço, se houver). Se o GA4 for ativado, criar antes uma política de privacidade e linká-la no rodapé (hoje o site não coleta dados do visitante e não tem essa página).
 
 Critérios de aceite:
-- [ ] Menu, FAQ e carrossel funcionam com mouse, toque e teclado.
-- [ ] O mapa não carrega até a seção aparecer, e nenhum recurso do YouTube carrega antes do clique no vídeo (verificar na aba Network).
-- [ ] Sem `ga4Id`, nenhum banner e nenhum script do Google é carregado.
-- [ ] A página 404 segue a identidade visual e tem cabeçalho/rodapé consistentes com a página inicial.
+- [x] Menu, FAQ e carrossel funcionam com mouse, toque e teclado.
+- [x] O mapa não carrega até a seção aparecer, e nenhum recurso do YouTube carrega antes do clique no vídeo (verificar na aba Network).
+- [x] Sem `ga4Id`, nenhum banner e nenhum script do Google é carregado.
+- [x] A página 404 segue a identidade visual e tem cabeçalho/rodapé consistentes com a página inicial.
 
 Commit sugerido: `feat: interatividade e página 404`.
 
@@ -296,7 +296,7 @@ Tarefas:
    - Settings → Pages → Source: "Deploy from a branch" → Branch `main` / pasta `/ (root)`.
    - Ativar "Enforce HTTPS".
    - Documentar no `README.md` o passo a passo de publicação e de atualização (editar → commit → push → publicado em ~1 min).
-7. **Domínio próprio (quando houver):** criar `CNAME` com o domínio; documentar no README os registros DNS no Registro.br (registros A apontando para os IPs do GitHub Pages e CNAME `www` → `<usuario>.github.io`), consultando a documentação oficial do GitHub Pages para os valores atuais.
+7. **Domínio próprio (quando houver):** criar `CNAME` com o domínio; trocar `<base href="/petsmind/">` por `<base href="/">` no `404.html`; documentar no README os registros DNS no Registro.br (registros A apontando para os IPs do GitHub Pages e CNAME `www` → `<usuario>.github.io`), consultando a documentação oficial do GitHub Pages para os valores atuais.
 8. **Checklist final no README:** listar todos os `[A CONFIRMAR]` restantes no projeto (pode gerar com `grep -rn "A CONFIRMAR" .`).
 
 Critérios de aceite:

@@ -103,3 +103,8 @@
     --secao-padding: var(--esp-12);
   }
 }
+
+/* Com JS ativo, o menu do celular/tablet vira hambúrguer: o cabeçalho tem uma linha só */
+.js {
+  --cabecalho-nav: 0px;
+}
