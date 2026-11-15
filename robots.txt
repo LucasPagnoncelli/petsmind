@@ -1,0 +1,5 @@
+# Pet's Mind Adestramento — site estático no GitHub Pages
+User-agent: *
+Allow: /
+
+Sitemap: https://lucaspagnoncelli.github.io/petsmind/sitemap.xml

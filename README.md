@@ -5,15 +5,17 @@ Site da **Pet's Mind Adestramento**, serviço de adestramento de cães com refor
 - Landing page de página única, com seções (Início, Sobre, Serviços, Como funciona, Depoimentos, Atendimento, Dúvidas e Contato).
 - Objetivo: gerar contatos pelo WhatsApp.
 - HTML, CSS e JavaScript puros — **sem build step, sem frameworks, sem `npm`**.
-- Hospedado no **GitHub Pages** (site estático).
+- Hospedado no **GitHub Pages** (site estático): <https://lucaspagnoncelli.github.io/petsmind/>
 
 As regras completas de construção estão em [`CLAUDE.md`](CLAUDE.md).
 
 ## Estrutura
 
 ```
-index.html                 página inicial
+index.html                 página inicial (com meta tags e dados estruturados para o Google)
 404.html                   página de "não encontrado" (servida pelo GitHub Pages)
+sitemap.xml                mapa do site para o Google
+robots.txt                 permissões para buscadores
 .nojekyll                  desativa o Jekyll no GitHub Pages
 assets/
   css/
@@ -34,6 +36,7 @@ assets/
                            apple-touch-icon.png e logo-original.jpg (arquivo enviado)
     hero/ sobre/           fotos do Jhonatan e capa do vídeo da história
     depoimentos/           fotos dos cães (somente com autorização)
+    og-image.jpg           imagem da prévia ao compartilhar o link (1200×630)
   fonts/                   Montserrat e Open Sans (.woff2, licença OFL)
 ```
 
@@ -54,23 +57,44 @@ python3 -m http.server 8000
 
 Depois acesse <http://localhost:8000>.
 
-## Como publicar (GitHub Pages)
+## Como publicar (GitHub Pages) — feito uma única vez
 
-1. Faça commit e push das alterações para a branch `main`.
-2. No GitHub: **Settings → Pages → Source: "Deploy from a branch"** → branch `main`, pasta `/ (root)`.
-3. Ative **"Enforce HTTPS"**.
-4. Em cerca de 1 minuto o site fica disponível em <https://lucaspagnoncelli.github.io/petsmind/>.
+1. No GitHub, abra o repositório e vá em **Settings → Pages**.
+2. Em **Build and deployment → Source**, escolha **"Deploy from a branch"**.
+3. Em **Branch**, escolha **`main`** e a pasta **`/ (root)`**. Clique em **Save**.
+4. Aguarde 1 a 2 minutos e recarregue a página de Settings → Pages: aparece o aviso "Your site is live at https://lucaspagnoncelli.github.io/petsmind/".
+5. Na mesma página, marque **"Enforce HTTPS"** (se a opção estiver cinza, espere alguns minutos e tente de novo).
 
-Para atualizar: editar → commit → push → publicado em ~1 min.
-
-> Todos os caminhos do site são **relativos** (`assets/css/base.css`), para funcionar dentro da subpasta `/petsmind/` do GitHub Pages.
+> Todos os caminhos do site são **relativos** (`assets/css/base.css`), para funcionar dentro da subpasta `/petsmind/`. A página `404.html` usa `<base href="/petsmind/">`: se o repositório mudar de nome, troque esse trecho pelo novo nome.
 
 O site fica sempre no GitHub Pages (sem domínio próprio) e não coleta dados dos visitantes: não há analytics, aviso de cookies nem formulário.
 
+## Como atualizar o site
+
+1. Edite os arquivos (no computador ou direto no GitHub, pelo ícone de lápis).
+2. Faça **commit** e **push** para a branch `main`.
+3. Em cerca de 1 minuto, a nova versão está no ar (acompanhe na aba **Actions** do repositório).
+
+Ao mudar **preços, contatos ou perguntas frequentes**, atualize também os dados estruturados no `<head>` do `index.html` (blocos `application/ld+json`), para o Google mostrar a informação correta. Ao mudar a página, atualize a data em `<lastmod>` no `sitemap.xml`.
+
+## Depois de publicar (conferências)
+
+- **Prévia no WhatsApp:** mande o link <https://lucaspagnoncelli.github.io/petsmind/> para você mesmo e confira título, descrição e imagem. O WhatsApp guarda a prévia em cache; se ela vier antiga, teste com `?v=2` no fim do link.
+- **Dados estruturados:** cole o link no [Teste de Resultados Avançados do Google](https://search.google.com/test/rich-results) e confira se os blocos *Empresa local* e *Perguntas frequentes* aparecem sem erros.
+- **Desempenho:** rode o link no [PageSpeed Insights](https://pagespeed.web.dev/) (versão para celular).
+- **Google Search Console (recomendado):** em <https://search.google.com/search-console>, adicione a propriedade do tipo **Prefixo do URL** com `https://lucaspagnoncelli.github.io/petsmind/`, faça a verificação (o método "Tag HTML" gera uma linha `<meta>` para colar no `<head>` do `index.html`) e envie o sitemap `sitemap.xml`. Isso é importante porque, num site em subpasta do GitHub Pages, os buscadores leem o `robots.txt` só na raiz do domínio (`lucaspagnoncelli.github.io/robots.txt`), e não o desta pasta; enviar o sitemap pelo Search Console garante que o Google encontre a página.
+
 ## Pendências
 
-Conteúdos ainda não confirmados aparecem no site com o marcador `[A CONFIRMAR: ...]`. Para listá-los:
+Não há conteúdo a confirmar no site (nenhum marcador `[A CONFIRMAR]`). Para conferir no futuro:
 
 ```bash
-grep -rn "A CONFIRMAR" --exclude=CLAUDE.md .
+grep -rn "A CONFIRMAR" --exclude=CLAUDE.md --exclude=README.md .
 ```
+
+Passos que dependem de você, fora do código:
+
+- [ ] Ativar o GitHub Pages e o "Enforce HTTPS" (seção "Como publicar").
+- [ ] Fazer as conferências da seção "Depois de publicar".
+- [ ] (Opcional) Cadastrar o site no Google Search Console e enviar o sitemap.
+- [ ] (Opcional) Trocar as fotos por versões em resolução maior, se houver.

@@ -270,7 +270,7 @@ Commit sugerido: `feat: interatividade e página 404`.
 
 ---
 
-### PARTE 4 — SEO, desempenho, acessibilidade e publicação no GitHub Pages
+### PARTE 4 — SEO, desempenho, acessibilidade e publicação no GitHub Pages ✅ concluída no código (falta ativar o GitHub Pages)
 
 **Objetivo:** site otimizado, encontrável no Google e publicado.
 
@@ -294,11 +294,11 @@ Tarefas:
 7. **Checklist final no README:** listar todos os `[A CONFIRMAR]` restantes no projeto (pode gerar com `grep -rn "A CONFIRMAR" .`).
 
 Critérios de aceite:
-- [ ] Site acessível pela URL do GitHub Pages, com HTTPS, sem arquivos quebrados.
-- [ ] Lighthouse mobile: Desempenho ≥ 90, Acessibilidade ≥ 95, Boas práticas ≥ 90, SEO ≥ 95.
-- [ ] JSON-LD válido no Teste de Resultados Avançados do Google.
-- [ ] Prévia correta ao compartilhar o link no WhatsApp (título, descrição e imagem).
-- [ ] README com instruções de publicação, atualização e lista de pendências.
+- [ ] Site acessível pela URL do GitHub Pages, com HTTPS, sem arquivos quebrados. (conferir depois de ativar o Pages)
+- [x] Lighthouse mobile: Desempenho ≥ 90, Acessibilidade ≥ 95, Boas práticas ≥ 90, SEO ≥ 95.
+- [ ] JSON-LD válido no Teste de Resultados Avançados do Google. (conferir depois de publicar)
+- [ ] Prévia correta ao compartilhar o link no WhatsApp (título, descrição e imagem). (conferir depois de publicar)
+- [x] README com instruções de publicação, atualização e lista de pendências.
 
 Commit sugerido: `feat: SEO, desempenho e publicação no GitHub Pages`.
 

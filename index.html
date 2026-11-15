@@ -5,12 +5,248 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Marca que o JS está ativo antes de desenhar a página (evita o cabeçalho "pular") -->
   <script>document.documentElement.classList.add("js");</script>
-  <!-- Title e description provisórios: versão final na Parte 4 -->
-  <title>Pet's Mind Adestramento | Adestramento de cães em Rio do Sul e região</title>
-  <meta name="description" content="Adestramento de cães com reforço positivo em Rio do Sul e região, com Jhonatan D. da Pet's Mind Adestramento. Fale pelo WhatsApp.">
+  <title>Adestrador em Rio do Sul e Região | Pet's Mind Adestramento</title>
+  <meta name="description" content="Adestramento de cães com reforço positivo em Rio do Sul e região. Filhotes, obediência e comportamento, na sua casa. Fale com Jhonatan D. no WhatsApp.">
+  <link rel="canonical" href="https://lucaspagnoncelli.github.io/petsmind/">
+  <meta name="theme-color" content="#111111">
+
+  <!-- Prévia ao compartilhar o link (WhatsApp, Facebook, Instagram, X) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Pet's Mind Adestramento">
+  <meta property="og:url" content="https://lucaspagnoncelli.github.io/petsmind/">
+  <meta property="og:title" content="Adestrador em Rio do Sul e Região | Pet's Mind Adestramento">
+  <meta property="og:description" content="Adestramento de cães com reforço positivo, na sua casa. Filhotes, obediência e comportamento. Fale com Jhonatan D. no WhatsApp.">
+  <meta property="og:image" content="https://lucaspagnoncelli.github.io/petsmind/assets/img/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jhonatan D., da Pet's Mind Adestramento, com um cão preto ao lado do texto Adestramento de cães em Rio do Sul e região">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Adestrador em Rio do Sul e Região | Pet's Mind Adestramento">
+  <meta name="twitter:description" content="Adestramento de cães com reforço positivo, na sua casa. Fale com Jhonatan D. no WhatsApp.">
+  <meta name="twitter:image" content="https://lucaspagnoncelli.github.io/petsmind/assets/img/og-image.jpg">
 
   <link rel="icon" href="assets/img/logo/favicon.ico" sizes="32x32">
   <link rel="icon" href="assets/img/logo/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/logo/apple-touch-icon.png">
+
+  <!-- Carregamento prioritário: fonte do título principal e foto do topo -->
+  <link rel="preload" href="assets/fonts/montserrat-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/hero/jhonatan-com-cao.webp" as="image" type="image/webp" fetchpriority="high">
+
+  <!-- Dados estruturados para o Google. Ao mudar preços, contatos ou perguntas no site, atualize aqui também. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://lucaspagnoncelli.github.io/petsmind/#negocio",
+    "name": "Pet's Mind Adestramento",
+    "description": "Adestramento de cães com reforço positivo em Rio do Sul e região, na casa do tutor. Com Jhonatan D.",
+    "url": "https://lucaspagnoncelli.github.io/petsmind/",
+    "logo": "https://lucaspagnoncelli.github.io/petsmind/assets/img/logo/logo-512.png",
+    "image": "https://lucaspagnoncelli.github.io/petsmind/assets/img/og-image.jpg",
+    "telephone": "+55-47-8855-0632",
+    "priceRange": "R$ 120 a R$ 1.200",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rio do Sul",
+      "addressRegion": "SC",
+      "addressCountry": "BR"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Rio do Sul e região, Alto Vale do Itajaí, SC"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Jhonatan D."
+    },
+    "sameAs": [
+      "https://www.instagram.com/petsmind.adestramento/",
+      "https://www.youtube.com/@petsmind.adestramento"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços de adestramento",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Avaliação comportamental"
+          },
+          "price": "120",
+          "priceCurrency": "BRL"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Educação de filhotes"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "600",
+            "priceCurrency": "BRL"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Obediência básica"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "800",
+            "priceCurrency": "BRL"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Passeio sem puxões"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "500",
+            "priceCurrency": "BRL"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Correção de comportamento"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "900",
+            "priceCurrency": "BRL"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cães reativos"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "1200",
+            "priceCurrency": "BRL"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qual a idade ideal para o cão sair da ninhada para ser doado ou vendido?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entre os 60 e 70 dias! Nessa idade, a mãe já ensinou a “etiqueta canina” e ele desmamou completamente. Retirar antes pode gerar problemas de sociabilidade com outros cães."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Meu cão tem 7 meses e começou a rosnar para qualquer estranho. Por quê?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Estamos falando de um cão que está entrando na “pré-adolescência”. Nessa fase, se abre na mente do cão o que chamamos de drive de defesa: ele começa a deixar a ingenuidade de filhote de lado e a ver “os perigos do mundo”. Mesmo que o perigo seja o carteiro!"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dá para ensinar um cão idoso ou com mais idade?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claro, dá sim! Desde os primeiros até o último dia de vida é possível adestrar um cão. Adestramento nada mais é que padronização de comportamento. Cada fase da vida tem suas limitações, que precisam ser levadas em consideração. No cão idoso, a neuroplasticidade (a capacidade de criar novos caminhos neuronais, ou seja, de aprender coisas novas) é prejudicada pela idade. Por isso, o treino exige um pouco mais de paciência da nossa parte, inclusive para corrigir hábitos como latir demais. Mas um cão idoso é capaz de aprender qualquer coisa. Então, cão velho aprende truque novo, sim!"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Meu shih-tzu é medroso e treme ao ver outros cães e até pessoas. Isso é normal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. Nenhum cão tem medo naturalmente. Esse tipo de comportamento nasce de algum tipo de “trauma” ou de um manejo inadequado nas situações de medo. A forma de melhorar isso é com uma aproximação progressiva e controlada das coisas de que ele tem medo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Minha cachorra sempre foge quando eu abro o portão, mesmo ficando solta dentro do cercado. Por quê?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Esse tipo de situação acontece por curiosidade mesmo. O mundo fora do cercado é cheio de estímulos, cheiros e outros cães, então eles saem em busca desses estímulos sempre que têm a chance. Nesse caso, cabe um trabalho de obediência básica para explicar ao cão, de uma forma que ele entenda, que ele não deve sair."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quando soltamos meu cachorro para brincar, ele não quer voltar para o canil. O que fazer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ele acabou percebendo que é mais rápido que vocês e que, se correr, vai conseguir adiar a ida para o canil. Uma dica é tirá-lo do canil com guia e coleira, para vocês terem controle. Depois de algum tempo, ele deve esquecer esse comportamento de fugir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Meu amstaff está roendo tudo o que encontra dando sopa pela casa. Tem jeito?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Estamos falando de um cão que costuma ter alto drive de caça, e é impossível tirar isso dele. Então, você precisa direcionar esse instinto de uma forma saudável, usando brinquedos, bolinha ou brincando de cabo de guerra. Esse tipo de brincadeira costuma ajudar. Outra coisa que ajuda é o cão ter o lugar dele, seja um canil ou um quarto no apartamento. Esse comportamento de roer é reflexo de um cão que recebeu liberdade antes da educação."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Por que meu cachorro só rói as coisas quando eu não estou em casa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aqui existem dois motivos. O primeiro pode ser o receio de ser repreendido: ele sabe que você não vai repreendê-lo se não estiver ali. Mas o motivo mais comum se chama ansiedade de separação. Nessa situação, o cão fica viciado na atenção do dono e, quando não tem essa atenção, enfrenta uma crise de ansiedade, quase uma abstinência. Ele acaba descontando essa ansiedade em objetos, às vezes em objetos que têm o cheiro do dono, como chinelos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como fazer o filhote parar de querer morder nossos pés e mãos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Antes de pensar em como corrigir, vamos ao motivo de isso acontecer. Isso se deve ao nosso hábito de interagir com o cão pelo toque: fazendo carinho, pegando no colo etc. Uma vez que você toca o seu cão, ele se sente no direito de tocar também. Você toca com a mão, ele toca com a boca. Daí vem esse hábito, que pode se tornar inconveniente conforme o cão cresce. Então, procure interagir com o seu cão usando brinquedos e direcione a atenção dele para objetos, não para você. Isso vai resolver a questão."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Toda vez que fica animada, minha cachorra faz xixi. Isso é normal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. Esse comportamento costuma ter duas raízes: ou ela está oferecendo um comportamento excessivamente submisso, ou aprendeu a ganhar atenção por meio das necessidades."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Meu cão comia as próprias fezes e depois passou mal. Uma coisa tem a ver com a outra?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não creio que uma coisa tenha relação direta com a outra. Mas, sim, casos de coprofagia (o hábito de comer fezes) são mais comuns do que pensamos. Os cães que desenvolvem esse comportamento insalubre normalmente são ansiosos e agitados e, por conta de um manejo equivocado, acabam aprendendo a interagir com o dono por meio das fezes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A “peste de sangue” dá em todos os filhotes. Como prevenir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Provavelmente estamos falando da rangeliose canina. O principal vetor de transmissão dessa doença é uma espécie de carrapato. Então, pensando na prevenção, você pode aplicar um carrapaticida no ambiente onde fica o filhote. Existem também coleiras anticarrapato, que podem ajudar nesse controle. Observação importante: não sou veterinário. Recomendo sempre procurar um profissional da área, inclusive para tirar dúvidas."
+        }
+      }
+    ]
+  }
+  </script>
 
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -174,7 +410,7 @@
     <section class="secao secao--clara sobre" id="sobre" aria-labelledby="sobre-titulo">
       <div class="container sobre__grade">
         <div class="sobre__midia">
-          <img class="sobre__foto" src="assets/img/sobre/jhonatan-treinando-filhote.webp" width="577" height="721" loading="lazy" alt="Jhonatan D. treinando um filhote de pastor-alemão com guia e brinquedo de corda">
+          <img class="sobre__foto" src="assets/img/sobre/jhonatan-treinando-filhote.webp" srcset="assets/img/sobre/jhonatan-treinando-filhote-360.webp 360w, assets/img/sobre/jhonatan-treinando-filhote.webp 577w" sizes="(min-width: 472px) 440px, calc(100vw - 32px)" width="577" height="721" loading="lazy" alt="Jhonatan D. treinando um filhote de pastor-alemão com guia e brinquedo de corda">
         </div>
         <div class="sobre__conteudo">
           <h2 class="secao__titulo" id="sobre-titulo">Sobre o adestrador</h2>
@@ -199,7 +435,7 @@
              pelo player youtube-nocookie.com, carregado só nesse momento. -->
         <div class="video" data-youtube-id="eS8RAt--nu4">
           <a class="video__capa video__capa--foto" href="https://www.youtube.com/watch?v=eS8RAt--nu4" target="_blank" rel="noopener">
-            <img src="assets/img/sobre/capa-video-historia.webp" width="707" height="398" loading="lazy" alt="">
+            <img src="assets/img/sobre/capa-video-historia.webp" srcset="assets/img/sobre/capa-video-historia-420.webp 420w, assets/img/sobre/capa-video-historia.webp 707w" sizes="(min-width: 832px) 800px, calc(100vw - 32px)" width="707" height="398" loading="lazy" alt="">
             <span class="video__play"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-play"/></svg></span>
             <span class="video__legenda">
               <span class="video__titulo">Conheça um pouco da minha história</span>
