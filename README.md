@@ -29,7 +29,6 @@ assets/
     carousel.js            botões e indicadores do carrossel de depoimentos
     video.js               vídeo do YouTube só carrega ao clicar
     mapa.js                mapa só carrega quando a seção aparece
-    cookies.js             aviso de cookies e Google Analytics (desligado sem ga4Id)
   img/
     logo/                  logo.svg (vetorial), logo-512.png, favicon.ico,
                            apple-touch-icon.png e logo-original.jpg (arquivo enviado)
@@ -60,13 +59,13 @@ Depois acesse <http://localhost:8000>.
 1. Faça commit e push das alterações para a branch `main`.
 2. No GitHub: **Settings → Pages → Source: "Deploy from a branch"** → branch `main`, pasta `/ (root)`.
 3. Ative **"Enforce HTTPS"**.
-4. Em cerca de 1 minuto o site fica disponível em `https://<usuario>.github.io/<repositorio>/`.
+4. Em cerca de 1 minuto o site fica disponível em <https://lucaspagnoncelli.github.io/petsmind/>.
 
 Para atualizar: editar → commit → push → publicado em ~1 min.
 
-> Todos os caminhos do site são **relativos** (`assets/css/base.css`), para funcionar também em `usuario.github.io/nome-do-repo/`.
+> Todos os caminhos do site são **relativos** (`assets/css/base.css`), para funcionar dentro da subpasta `/petsmind/` do GitHub Pages.
 
-O passo a passo completo (domínio próprio, DNS e checklist de lançamento) será documentado na Parte 4.
+O site fica sempre no GitHub Pages (sem domínio próprio) e não coleta dados dos visitantes: não há analytics, aviso de cookies nem formulário.
 
 ## Pendências
 

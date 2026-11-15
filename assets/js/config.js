@@ -13,6 +13,5 @@ window.PETSMIND_CONFIG = {
   whatsappLink: "https://api.whatsapp.com/message/PCRETT4YYIHWI1?autoload=1&app_absent=0",
   email: "",                             // a empresa não possui e-mail
   instagram: "https://www.instagram.com/petsmind.adestramento/",
-  youtube: "https://www.youtube.com/@petsmind.adestramento",
-  ga4Id: ""                              // vazio = analytics desativado
+  youtube: "https://www.youtube.com/@petsmind.adestramento"
 };

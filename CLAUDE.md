@@ -15,7 +15,7 @@ Este arquivo orienta o Claude Code na construção do site institucional da **Pe
 | Objetivo principal | Gerar contatos pelo WhatsApp (o site não tem formulário) |
 | Idioma | Português (Brasil) — `<html lang="pt-BR">` |
 | Repositório | GitHub |
-| Hospedagem | GitHub Pages (site estático, sem back-end) |
+| Hospedagem | GitHub Pages, sempre (site estático, sem back-end, sem domínio próprio): https://lucaspagnoncelli.github.io/petsmind/ |
 
 ### 1.1 Dados de contato confirmados
 
@@ -42,7 +42,7 @@ Todos esses valores ficam em `assets/js/config.js` (seção 5) e são lidos de l
 | Horário | A combinar com o adestrador |
 | Preços | Avaliação R$ 120 · Filhotes a partir de R$ 600 · Obediência a partir de R$ 800 · Passeio a partir de R$ 500 · Correção a partir de R$ 900 · Reativos a partir de R$ 1.200 (valores de referência) |
 | Vídeo do canal | "Conheça um pouco da minha história como adestrador" — ID `eS8RAt--nu4` |
-| Não usar no site | Formulário, e-mail, avaliações/nota do Google, seção de resultados (antes/depois) |
+| Não usar no site | Formulário, e-mail, avaliações/nota do Google, seção de resultados (antes/depois), cookies, analytics ou qualquer coleta de dados |
 
 ---
 
@@ -112,7 +112,6 @@ pets-mind-site/
 ├── 404.html
 ├── robots.txt
 ├── sitemap.xml
-├── CNAME                     (somente quando houver domínio próprio — Parte 4)
 ├── .nojekyll                 (arquivo vazio: desativa o Jekyll no GitHub Pages)
 ├── assets/
 │   ├── css/
@@ -127,8 +126,7 @@ pets-mind-site/
 │   │   ├── faq.js
 │   │   ├── carousel.js
 │   │   ├── video.js          (vídeo do YouTube sob demanda — Parte 3)
-│   │   ├── mapa.js           (mapa sob demanda — Parte 3)
-│   │   └── cookies.js
+│   │   └── mapa.js           (mapa sob demanda — Parte 3)
 │   ├── img/
 │   │   ├── logo/             (logo.svg, logo-512.png, favicon.ico, apple-touch-icon.png)
 │   │   ├── hero/             (jhonatan-com-cao.webp)
@@ -161,15 +159,14 @@ window.PETSMIND_CONFIG = {
   whatsappLink: "https://api.whatsapp.com/message/PCRETT4YYIHWI1?autoload=1&app_absent=0",
   email: "",                             // a empresa não possui e-mail
   instagram: "https://www.instagram.com/petsmind.adestramento/",
-  youtube: "https://www.youtube.com/@petsmind.adestramento",
-  ga4Id: ""                              // vazio = analytics desativado
+  youtube: "https://www.youtube.com/@petsmind.adestramento"
 };
 ```
 
   Todo botão de WhatsApp usa o atributo `data-whatsapp` (e opcionalmente `data-servico="Nome do serviço"`). O `whatsapp.js` preenche o `href` e adiciona `target="_blank"` e `rel="noopener"`:
   - **Com `whatsappNumero` preenchido (padrão):** `https://wa.me/<whatsappNumero>?text=<mensagem codificada com encodeURIComponent>`. Sem `data-servico`, usa `mensagemPadrao`; com `data-servico`, usa `mensagemServico + nome do serviço`.
   - **Com `whatsappNumero` vazio:** usa `whatsappLink` exatamente como está, **sem** acrescentar parâmetros (o link do WhatsApp Business não aceita texto extra).
-  - O `data-servico` também identifica o serviço nos eventos de analytics (Parte 3). Nenhum link ou número de WhatsApp escrito direto no HTML: o número visível (ex.: no rodapé e no contato) é preenchido pelo JS a partir de `whatsappExibicao`, com o texto `(47) 8855-0632` no HTML como alternativa caso o JS não carregue.
+  - Nenhum link ou número de WhatsApp escrito direto no HTML: o número visível (ex.: no rodapé e no contato) é preenchido pelo JS a partir de `whatsappExibicao`, com o texto `(47) 8855-0632` no HTML como alternativa caso o JS não carregue.
 - **Imagens:** WebP, com `width`/`height` definidos, `srcset` quando houver mais de um tamanho, `loading="lazy"` fora da primeira dobra e `alt` descritivo com contexto local (ex.: "Jhonatan D. treinando um border collie em Rio do Sul"). Enquanto não houver fotos reais, use placeholders neutros (bloco cinza com o texto do que deve entrar) — não use fotos de terceiros.
 - **Acessibilidade (WCAG 2.1 AA):** contraste ≥ 4,5:1, foco visível (`:focus-visible` com contorno amarelo/preto), tudo operável por teclado, `prefers-reduced-motion` respeitado em animações e rolagem suave.
 
@@ -180,7 +177,7 @@ window.PETSMIND_CONFIG = {
 - **Sem back-end:** o contato é feito somente pelo WhatsApp; o site não tem formulário.
 - **Sem redirecionamentos de servidor:** o `404.html` na raiz é usado automaticamente pelo GitHub Pages.
 - **HTTPS:** ativado em Settings → Pages → "Enforce HTTPS".
-- **Domínio próprio:** arquivo `CNAME` na raiz com o domínio (ex.: `petsmindadestramento.com.br`) + DNS configurado no Registro.br.
+- **Sem domínio próprio:** o site fica sempre em `lucaspagnoncelli.github.io/petsmind/` (por isso o `404.html` usa `<base href="/petsmind/">`).
 - **`.nojekyll`** na raiz para o GitHub Pages servir os arquivos sem processamento.
 
 ---
@@ -254,7 +251,7 @@ Critérios de aceite:
 
 ### PARTE 3 — Interatividade e página 404 ✅ concluída
 
-**Objetivo:** deixar tudo funcional: menu mobile, carrossel, vídeo e mapa sob demanda, cookies e página 404.
+**Objetivo:** deixar tudo funcional: menu mobile, carrossel, vídeo e mapa sob demanda e página 404.
 
 Tarefas:
 1. **`menu.js`** — menu hambúrguer em tela cheia no mobile; abre/fecha por toque e Esc; fecha ao escolher um item; `aria-expanded` atualizado; trava a rolagem do fundo com o menu aberto.
@@ -263,12 +260,10 @@ Tarefas:
 4. **`video.js`** — vídeo do YouTube sob demanda em `#sobre`: a capa local (`capa-video-historia.webp`) com botão de play continua como link para o YouTube sem JS; com JS, o clique troca a capa pelo iframe `youtube-nocookie.com/embed/<data-youtube-id>`. Nenhum recurso do YouTube carrega antes do clique.
 5. **`mapa.js`** — iframe do Google Maps centrado em Rio do Sul, inserido no contêiner `data-mapa` via `IntersectionObserver` só quando `#atendimento` aparece na tela.
 6. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Atenção: no GitHub Pages o 404 pode ser servido em qualquer URL; use caminhos que funcionem a partir da raiz do site (ex.: definir `<base href>` com o caminho do repositório ou usar URLs absolutas do domínio final).
-7. **`cookies.js` + GA4** — se `ga4Id` estiver preenchido, exibe banner simples (Aceitar / Recusar); o script do GA4 só carrega após aceitar; escolha salva em `localStorage` (com `try/catch`). Evento: `clique_whatsapp` (com o serviço, se houver). Se o GA4 for ativado, criar antes uma política de privacidade e linká-la no rodapé (hoje o site não coleta dados do visitante e não tem essa página).
 
 Critérios de aceite:
 - [x] Menu, FAQ e carrossel funcionam com mouse, toque e teclado.
 - [x] O mapa não carrega até a seção aparecer, e nenhum recurso do YouTube carrega antes do clique no vídeo (verificar na aba Network).
-- [x] Sem `ga4Id`, nenhum banner e nenhum script do Google é carregado.
 - [x] A página 404 segue a identidade visual e tem cabeçalho/rodapé consistentes com a página inicial.
 
 Commit sugerido: `feat: interatividade e página 404`.
@@ -288,7 +283,7 @@ Tarefas:
 2. **Dados estruturados (JSON-LD)** no `index.html`:
    - `ProfessionalService` (ou `LocalBusiness`) com nome, telefone `+55-47-8855-0632`, `areaServed` (Rio do Sul e região, SC), logo, `priceRange` e `sameAs` (Instagram e YouTube do `config.js`). Sem horário fixo (atendimento a combinar).
    - `FAQPage` com as 12 perguntas da seção Dúvidas.
-3. **`sitemap.xml`** (somente a página inicial) e **`robots.txt`** (permitir tudo e apontar para o sitemap). Usar a URL final do site — se ainda não houver domínio, usar `https://<usuario>.github.io/<repo>/` e deixar comentário para trocar.
+3. **`sitemap.xml`** (somente a página inicial) e **`robots.txt`** (permitir tudo e apontar para o sitemap). Usar a URL do site: `https://lucaspagnoncelli.github.io/petsmind/`.
 4. **Desempenho:** minimizar CSS/JS crítico, `preload` da fonte do H1 e da imagem do hero, `fetchpriority="high"` na imagem do hero, scripts com `defer`, imagens em WebP com tamanhos adequados. Meta: PageSpeed mobile ≥ 90, LCP < 2,5 s, página inicial < 1,5 MB.
 5. **Revisão de acessibilidade:** rodar Lighthouse; corrigir contraste, ordem de headings, `alt` e foco. Meta: Acessibilidade ≥ 95.
 6. **Publicação no GitHub Pages:**
@@ -296,15 +291,14 @@ Tarefas:
    - Settings → Pages → Source: "Deploy from a branch" → Branch `main` / pasta `/ (root)`.
    - Ativar "Enforce HTTPS".
    - Documentar no `README.md` o passo a passo de publicação e de atualização (editar → commit → push → publicado em ~1 min).
-7. **Domínio próprio (quando houver):** criar `CNAME` com o domínio; trocar `<base href="/petsmind/">` por `<base href="/">` no `404.html`; documentar no README os registros DNS no Registro.br (registros A apontando para os IPs do GitHub Pages e CNAME `www` → `<usuario>.github.io`), consultando a documentação oficial do GitHub Pages para os valores atuais.
-8. **Checklist final no README:** listar todos os `[A CONFIRMAR]` restantes no projeto (pode gerar com `grep -rn "A CONFIRMAR" .`).
+7. **Checklist final no README:** listar todos os `[A CONFIRMAR]` restantes no projeto (pode gerar com `grep -rn "A CONFIRMAR" .`).
 
 Critérios de aceite:
 - [ ] Site acessível pela URL do GitHub Pages, com HTTPS, sem arquivos quebrados.
 - [ ] Lighthouse mobile: Desempenho ≥ 90, Acessibilidade ≥ 95, Boas práticas ≥ 90, SEO ≥ 95.
 - [ ] JSON-LD válido no Teste de Resultados Avançados do Google.
 - [ ] Prévia correta ao compartilhar o link no WhatsApp (título, descrição e imagem).
-- [ ] README com instruções de publicação, atualização, domínio e lista de pendências.
+- [ ] README com instruções de publicação, atualização e lista de pendências.
 
 Commit sugerido: `feat: SEO, desempenho e publicação no GitHub Pages`.
 
@@ -312,7 +306,7 @@ Commit sugerido: `feat: SEO, desempenho e publicação no GitHub Pages`.
 
 ## 8. Fora do escopo (não implementar agora)
 
-Blog, páginas individuais por serviço/cidade, agendamento online, pagamento online (Pix/link), área do cliente com login, painel administrativo, formulário de contato, seção de resultados (antes/depois), lightbox de fotos, avaliações do Google, política de privacidade (só criar se o GA4 for ativado).
+Blog, páginas individuais por serviço/cidade, agendamento online, pagamento online (Pix/link), área do cliente com login, painel administrativo, formulário de contato, seção de resultados (antes/depois), lightbox de fotos, avaliações do Google, cookies e analytics (o site não coleta dados), política de privacidade, domínio próprio.
 
 ---
 

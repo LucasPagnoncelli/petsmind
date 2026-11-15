@@ -1416,60 +1416,6 @@
 
 
 /* ==========================================================================
-   Aviso de cookies (só aparece se o GA4 estiver configurado — cookies.js)
-   Fica à esquerda do botão flutuante do WhatsApp, sem cobri-lo.
-   ========================================================================== */
-.cookies {
-  position: fixed;
-  left: var(--esp-2);
-  right: calc(var(--esp-2) + 56px + var(--esp-2));
-  bottom: var(--esp-2);
-  z-index: var(--z-flutuante);
-  border: 1px solid var(--cor-borda-escura);
-  border-radius: var(--raio-cartao);
-  background-color: var(--cor-preto);
-  color: var(--cor-branco);
-  box-shadow: var(--sombra-flutuante);
-}
-
-.cookies__interno {
-  display: grid;
-  gap: var(--esp-2);
-  padding: var(--esp-2);
-}
-
-.cookies__texto {
-  font-size: var(--fs-pequeno);
-}
-
-.cookies__botoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--esp-1);
-}
-
-.cookies .btn--secundario {
-  border-color: var(--cor-branco);
-  color: var(--cor-branco);
-}
-
-.cookies .btn--secundario:hover,
-.cookies .btn--secundario:focus-visible {
-  background-color: var(--cor-branco);
-  color: var(--cor-preto);
-}
-
-@media (min-width: 768px) {
-  .cookies {
-    right: auto;
-    left: var(--esp-3);
-    bottom: var(--esp-3);
-    max-width: 560px;
-  }
-}
-
-
-/* ==========================================================================
    Botão flutuante do WhatsApp (único lugar com --cor-whatsapp)
    ========================================================================== */
 .whatsapp-flutuante {
