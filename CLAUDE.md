@@ -11,7 +11,7 @@ Este arquivo orienta o Claude Code na construção do site institucional da **Pe
 | Empresa | Pet's Mind Adestramento |
 | Adestrador | Jhonatan D. |
 | Área de atendimento | Rio do Sul e região (Alto Vale do Itajaí, SC) |
-| Tipo de site | Landing page institucional (página única com seções) + páginas auxiliares |
+| Tipo de site | Landing page institucional (página única com seções) + página 404 |
 | Objetivo principal | Gerar contatos pelo WhatsApp (o site não tem formulário) |
 | Idioma | Português (Brasil) — `<html lang="pt-BR">` |
 | Repositório | GitHub |
@@ -109,7 +109,6 @@ Próximo, confiante e respeitoso com o animal. Fala com o tutor como "você". Pr
 ```
 pets-mind-site/
 ├── index.html
-├── politica-de-privacidade.html
 ├── 404.html
 ├── robots.txt
 ├── sitemap.xml
@@ -253,9 +252,9 @@ Critérios de aceite:
 
 ---
 
-### PARTE 3 — Interatividade e páginas auxiliares
+### PARTE 3 — Interatividade e página 404
 
-**Objetivo:** deixar tudo funcional: menu mobile, carrossel, vídeo e mapa sob demanda, cookies e páginas extras.
+**Objetivo:** deixar tudo funcional: menu mobile, carrossel, vídeo e mapa sob demanda, cookies e página 404.
 
 Tarefas:
 1. **`menu.js`** — menu hambúrguer em tela cheia no mobile; abre/fecha por toque e Esc; fecha ao escolher um item; `aria-expanded` atualizado; trava a rolagem do fundo com o menu aberto.
@@ -263,17 +262,16 @@ Tarefas:
 3. **`carousel.js`** — depoimentos com botões anterior/próximo, swipe no celular e indicadores (ativar os controles que estão com `hidden`); sem avanço automático. Com 2 depoimentos, os controles só aparecem quando os cartões não cabem lado a lado.
 4. **`video.js`** — vídeo do YouTube sob demanda em `#sobre`: a capa local (`capa-video-historia.webp`) com botão de play continua como link para o YouTube sem JS; com JS, o clique troca a capa pelo iframe `youtube-nocookie.com/embed/<data-youtube-id>`. Nenhum recurso do YouTube carrega antes do clique.
 5. **`mapa.js`** — iframe do Google Maps centrado em Rio do Sul, inserido no contêiner `data-mapa` via `IntersectionObserver` só quando `#atendimento` aparece na tela.
-6. **`politica-de-privacidade.html`** — estrutura com: responsável (Jhonatan D. / Pet's Mind), dados coletados, finalidade, tempo de guarda, compartilhamento (GitHub Pages, Google, YouTube), direitos do titular e WhatsApp para solicitar exclusão. Texto marcado com aviso de que precisa de revisão pelo responsável.
-7. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Atenção: no GitHub Pages o 404 pode ser servido em qualquer URL; use caminhos que funcionem a partir da raiz do site (ex.: definir `<base href>` com o caminho do repositório ou usar URLs absolutas do domínio final).
-8. **`cookies.js` + GA4** — se `ga4Id` estiver preenchido, exibe banner simples (Aceitar / Recusar); o script do GA4 só carrega após aceitar; escolha salva em `localStorage` (com `try/catch`). Evento: `clique_whatsapp` (com o serviço, se houver).
+6. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Atenção: no GitHub Pages o 404 pode ser servido em qualquer URL; use caminhos que funcionem a partir da raiz do site (ex.: definir `<base href>` com o caminho do repositório ou usar URLs absolutas do domínio final).
+7. **`cookies.js` + GA4** — se `ga4Id` estiver preenchido, exibe banner simples (Aceitar / Recusar); o script do GA4 só carrega após aceitar; escolha salva em `localStorage` (com `try/catch`). Evento: `clique_whatsapp` (com o serviço, se houver). Se o GA4 for ativado, criar antes uma política de privacidade e linká-la no rodapé (hoje o site não coleta dados do visitante e não tem essa página).
 
 Critérios de aceite:
 - [ ] Menu, FAQ e carrossel funcionam com mouse, toque e teclado.
 - [ ] O mapa não carrega até a seção aparecer, e nenhum recurso do YouTube carrega antes do clique no vídeo (verificar na aba Network).
 - [ ] Sem `ga4Id`, nenhum banner e nenhum script do Google é carregado.
-- [ ] As 2 páginas auxiliares seguem a identidade visual e têm cabeçalho/rodapé consistentes.
+- [ ] A página 404 segue a identidade visual e tem cabeçalho/rodapé consistentes com a página inicial.
 
-Commit sugerido: `feat: interatividade e páginas auxiliares`.
+Commit sugerido: `feat: interatividade e página 404`.
 
 ---
 
@@ -290,7 +288,7 @@ Tarefas:
 2. **Dados estruturados (JSON-LD)** no `index.html`:
    - `ProfessionalService` (ou `LocalBusiness`) com nome, telefone `+55-47-8855-0632`, `areaServed` (Rio do Sul e região, SC), logo, `priceRange` e `sameAs` (Instagram e YouTube do `config.js`). Sem horário fixo (atendimento a combinar).
    - `FAQPage` com as 12 perguntas da seção Dúvidas.
-3. **`sitemap.xml`** (index e política) e **`robots.txt`** (permitir tudo e apontar para o sitemap). Usar a URL final do site — se ainda não houver domínio, usar `https://<usuario>.github.io/<repo>/` e deixar comentário para trocar.
+3. **`sitemap.xml`** (somente a página inicial) e **`robots.txt`** (permitir tudo e apontar para o sitemap). Usar a URL final do site — se ainda não houver domínio, usar `https://<usuario>.github.io/<repo>/` e deixar comentário para trocar.
 4. **Desempenho:** minimizar CSS/JS crítico, `preload` da fonte do H1 e da imagem do hero, `fetchpriority="high"` na imagem do hero, scripts com `defer`, imagens em WebP com tamanhos adequados. Meta: PageSpeed mobile ≥ 90, LCP < 2,5 s, página inicial < 1,5 MB.
 5. **Revisão de acessibilidade:** rodar Lighthouse; corrigir contraste, ordem de headings, `alt` e foco. Meta: Acessibilidade ≥ 95.
 6. **Publicação no GitHub Pages:**
@@ -314,7 +312,7 @@ Commit sugerido: `feat: SEO, desempenho e publicação no GitHub Pages`.
 
 ## 8. Fora do escopo (não implementar agora)
 
-Blog, páginas individuais por serviço/cidade, agendamento online, pagamento online (Pix/link), área do cliente com login, painel administrativo, formulário de contato, seção de resultados (antes/depois), lightbox de fotos, avaliações do Google.
+Blog, páginas individuais por serviço/cidade, agendamento online, pagamento online (Pix/link), área do cliente com login, painel administrativo, formulário de contato, seção de resultados (antes/depois), lightbox de fotos, avaliações do Google, política de privacidade (só criar se o GA4 for ativado).
 
 ---
 
