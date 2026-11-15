@@ -29,12 +29,27 @@ Este arquivo orienta o Claude Code na construção do site institucional da **Pe
 
 Todos esses valores ficam em `assets/js/config.js` (seção 5) e são lidos de lá.
 
+### 1.2 Conteúdo confirmado pelo cliente
+
+| Item | Definição |
+| --- | --- |
+| Cães atendidos | 25+ |
+| Experiência | Adestrador desde o fim de 2017 (usar "Desde 2017", não "X anos") |
+| Formações | Não possui; destacar a experiência prática |
+| História | Começou treinando cães resgatados pela ONG PAD (não citar a cidade da ONG); reportagem na TV da região; método próprio desenvolvido na prática |
+| Método | Reforço positivo |
+| Atendimento | Na casa do tutor, em Rio do Sul e região (sem lista de cidades) |
+| Horário | A combinar com o adestrador |
+| Preços | Avaliação R$ 120 · Filhotes a partir de R$ 600 · Obediência a partir de R$ 800 · Passeio a partir de R$ 500 · Correção a partir de R$ 900 · Reativos a partir de R$ 1.200 (valores de referência) |
+| Vídeo do canal | "Conheça um pouco da minha história como adestrador" — ID `eS8RAt--nu4` |
+| Não usar no site | Formulário, e-mail, avaliações/nota do Google, seção de resultados (antes/depois) |
+
 ---
 
 ## 2. Regras de trabalho (obrigatórias)
 
 1. **Execute uma parte por vez.** O projeto está dividido em 4 partes (seção 7). Ao terminar uma parte, pare, resuma o que foi feito, liste os critérios de aceite atendidos e **aguarde confirmação** antes de iniciar a próxima.
-2. **Nunca invente conteúdo do cliente.** Use os dados confirmados da seção 1.1. Preços, e-mail, cidades atendidas, formações, número de cães atendidos, anos de experiência e depoimentos devem usar o marcador:
+2. **Nunca invente conteúdo do cliente.** Use os dados confirmados das seções 1.1 e 1.2. Preços, e-mail, cidades atendidas, formações, número de cães atendidos, anos de experiência e depoimentos devem usar o marcador:
    `[A CONFIRMAR: descrição]` — ex.: `[A CONFIRMAR: preço da avaliação]`.
    Depoimentos de exemplo devem ser claramente marcados como exemplo e nunca parecer reais.
 3. **Sem build step.** O GitHub Pages serve os arquivos como estão. Nada de frameworks, bundlers ou `npm` para gerar o site. HTML, CSS e JavaScript puros (ES6+).
@@ -108,19 +123,20 @@ pets-mind-site/
 │   ├── js/
 │   │   ├── config.js         (WhatsApp e links — fonte única dos dados de contato)
 │   │   ├── whatsapp.js       (monta os links wa.me)
+│   │   ├── links.js          (aplica os links de Instagram/YouTube do config.js)
 │   │   ├── menu.js
 │   │   ├── faq.js
 │   │   ├── carousel.js
-│   │   ├── lightbox.js
+│   │   ├── video.js          (vídeo do YouTube sob demanda — Parte 3)
+│   │   ├── mapa.js           (mapa sob demanda — Parte 3)
 │   │   └── cookies.js
 │   ├── img/
 │   │   ├── logo/             (logo.svg, logo-512.png, favicon.ico, apple-touch-icon.png)
-│   │   ├── hero/
-│   │   ├── sobre/
-│   │   ├── resultados/
-│   │   ├── depoimentos/
+│   │   ├── hero/             (jhonatan-com-cao.webp)
+│   │   ├── sobre/            (jhonatan-treinando-filhote.webp, capa-video-historia.webp)
+│   │   ├── depoimentos/      (fotos dos cães, somente com autorização)
 │   │   └── og-image.jpg      (1200×630)
-│   └── fonts/
+│   └── fonts/                (Montserrat 600/700/800 e Open Sans 400/600, .woff2, licença OFL)
 └── README.md
 ```
 
@@ -172,14 +188,14 @@ window.PETSMIND_CONFIG = {
 
 ## 7. Plano de construção em 4 partes
 
-### PARTE 1 — Fundação e estrutura
+### PARTE 1 — Fundação e estrutura ✅ concluída
 
 **Objetivo:** repositório organizado, design system em CSS e o "esqueleto" do site navegável, com cabeçalho, rodapé e WhatsApp funcionando.
 
 Tarefas:
 1. Criar a estrutura de pastas da seção 4, `.nojekyll`, `README.md` (o que é o projeto, como rodar localmente, como publicar) e `.gitignore` (`.DS_Store`, `Thumbs.db`, `.vscode/`).
 2. Criar `variables.css` (cores, fontes, escala de espaçamento em múltiplos de 8 px, larguras de container: 1200 px máx.), `base.css` (reset moderno, tipografia, `.container`, botões `.btn--primario` amarelo/preto, `.btn--secundario` contorno, `.btn--whatsapp`) e `sections.css` (vazio, com comentários por seção).
-3. Criar `index.html` com `<head>` completo (charset, viewport, title e description provisórios, favicon, CSS) e o esqueleto de todas as seções com `id`s: `inicio`, `sobre`, `servicos`, `como-funciona`, `resultados`, `depoimentos`, `atendimento`, `duvidas`, `contato`.
+3. Criar `index.html` com `<head>` completo (charset, viewport, title e description provisórios, favicon, CSS) e o esqueleto de todas as seções com `id`s: `inicio`, `sobre`, `servicos`, `como-funciona`, `depoimentos`, `atendimento`, `duvidas`, `contato`.
 4. **Cabeçalho fixo:** logo (link para `#inicio`), menu com âncoras (Início · Sobre · Serviços · Como funciona · Depoimentos · Dúvidas · Contato), botão "Agendar avaliação" (WhatsApp). O cabeçalho encolhe ao rolar.
 5. **Rodapé:** logo, frase curta, links do menu, ícones com link para Instagram e YouTube (de `config.js`, com `aria-label`), WhatsApp (47) 8855-0632, "Rio do Sul e região — SC", link para Política de Privacidade, "© 2026 Pet's Mind Adestramento".
 6. **Botão flutuante de WhatsApp** (canto inferior direito, verde `--cor-whatsapp`, com `aria-label`).
@@ -198,20 +214,20 @@ Commit sugerido ao final: `feat: estrutura base, design system, cabeçalho, roda
 
 ---
 
-### PARTE 2 — Seções de conteúdo
+### PARTE 2 — Seções de conteúdo ✅ concluída
 
-**Objetivo:** preencher todas as seções da página inicial com layout final e textos de rascunho.
+**Objetivo:** preencher todas as seções da página inicial com layout final e conteúdo confirmado (seção 1.2).
 
-Tarefas (estilos em `sections.css`, um bloco comentado por seção):
+Como ficou (estilos em `sections.css`, um bloco comentado por seção):
 
 1. **Hero** (`#inicio`) — fundo preto com detalhe amarelo.
    - H1: "Adestramento de cães em Rio do Sul e região"
    - Subtítulo: "Educação com reforço positivo para filhotes e adultos, no conforto da sua casa. Com Jhonatan D., da Pet's Mind."
    - Botões: "Falar no WhatsApp" (primário) e "Ver serviços" (secundário, âncora `#servicos`).
-   - Imagem: placeholder "Foto do Jhonatan com um cão".
-   - Faixa de confiança: `[A CONFIRMAR: nº de cães atendidos]` · `[A CONFIRMAR: anos de experiência]` · `[A CONFIRMAR: nota no Google]`.
-2. **Sobre o adestrador** (`#sobre`) — foto (placeholder), texto de até 120 palavras `[A CONFIRMAR: história do Jhonatan]`, lista de formações `[A CONFIRMAR]`, frase de destaque: "Cada cão aprende de um jeito. Meu trabalho é descobrir o dele."
-3. **Serviços** (`#servicos`) — grade de cartões (1 coluna mobile, 2 tablet, 3 desktop). Cada cartão: ícone SVG, nome, para quem é, o que resolve, preço `[A CONFIRMAR]` e botão "Quero saber mais" com `data-whatsapp data-servico="<nome>"`.
+   - Foto: `assets/img/hero/jhonatan-com-cao.webp` (com `fetchpriority="high"`).
+   - Faixa de confiança: "25+ cães atendidos" · "Desde 2017 adestrando cães" · "Na sua casa — atendimento em Rio do Sul e região".
+2. **Sobre o adestrador** (`#sobre`) — foto `jhonatan-treinando-filhote.webp`, história (até 120 palavras, baseada no vídeo do canal), lista "Experiência" (sem formações), frase de destaque "Cada cão aprende de um jeito. Meu trabalho é descobrir o dele.", vídeo "Conheça um pouco da minha história como adestrador" (capa local `capa-video-historia.webp`, link para o YouTube; o player sob demanda entra na Parte 3) e botão "Ver o canal no YouTube".
+3. **Serviços** (`#servicos`) — grade de cartões (1 coluna mobile, 2 tablet, 3 desktop). Cada cartão: ícone SVG, nome, para quem é, o que resolve, preço (seção 1.2) e botão "Quero saber mais" com `data-whatsapp data-servico="<nome>"`. Abaixo da grade: "Valores de referência. O valor final é combinado depois da avaliação…".
 
    | Serviço | Para quem | O que resolve |
    | --- | --- | --- |
@@ -222,49 +238,37 @@ Tarefas (estilos em `sections.css`, um bloco comentado por seção):
    | Correção de comportamento | Cães com problemas específicos | Latidos, pulos, destruição, ansiedade de separação |
    | Cães reativos | Cães medrosos ou agressivos | Reação a outros cães, pessoas ou veículos |
 
-4. **Como funciona** (`#como-funciona`) — 5 passos numerados com ícone em círculo amarelo: Contato → Avaliação → Plano de treino → Aulas → Acompanhamento (textos na documentação, seção 6.5). Abaixo, parágrafo sobre o método `[A CONFIRMAR: método — reforço positivo]`.
-5. **Resultados** (`#resultados`) — grade de 6 placeholders de foto (antes/depois) com legenda "Nome do cão — o que mudou". Preparar a marcação para o lightbox da Parte 3 (`data-lightbox`). Reservar espaço para até 3 vídeos do canal do YouTube (`[A CONFIRMAR: IDs dos vídeos]`) e um botão "Ver mais no YouTube" (link do `config.js`).
-6. **Depoimentos** (`#depoimentos`) — estrutura de carrossel com 3 cartões **marcados como exemplo** (foto do cão, primeiro nome do tutor, cidade, texto). Selo `[A CONFIRMAR: nota média]` e link "Ver todas as avaliações no Google" `[A CONFIRMAR: link]`.
-7. **Área de atendimento** (`#atendimento`) — título "Onde eu atendo", lista de cidades `[A CONFIRMAR]` (sugestão: Rio do Sul, Lontras, Ibirama, Presidente Getúlio, Laurentino, Aurora, Agronômica, Ituporanga) e um contêiner reservado para o mapa (o iframe entra na Parte 3).
-8. **Dúvidas frequentes** (`#duvidas`) — 8 perguntas usando `<details>`/`<summary>` (funciona sem JS); respostas `[A CONFIRMAR]`:
-   - Com que idade posso começar a adestrar meu cão?
-   - O adestramento é feito na minha casa?
-   - Quantas aulas são necessárias?
-   - Preciso participar das aulas?
-   - Vocês usam algum tipo de punição?
-   - Cães adultos ou idosos ainda aprendem?
-   - Quais cidades vocês atendem?
-   - Quais as formas de pagamento?
-9. **Contato** (`#contato`) — botão grande de WhatsApp com o número (47) 8855-0632 visível, links para Instagram e YouTube e horário de atendimento (a combinar com o adestrador). Sem formulário.
+4. **Como funciona** (`#como-funciona`) — 5 passos numerados com ícone em círculo amarelo: Contato → Avaliação → Plano de treino → Aulas → Acompanhamento (textos aprovados pelo cliente). Abaixo, quadro "O método" com o texto sobre reforço positivo.
+5. **Depoimentos** (`#depoimentos`) — 2 depoimentos reais ("Tutor da Diana" e "Tutor do Maximus"), com frase de destaque, "Ler depoimento completo" (`<details>`), origem ("Vídeo no Instagram · mês/ano") e a inicial do cão no lugar da foto. Marcação pronta para o carrossel da Parte 3 (controles com `hidden`). Sem nota nem link do Google.
+6. **Área de atendimento** (`#atendimento`) — título "Onde eu atendo", destaque "Rio do Sul e região — Alto Vale do Itajaí, SC", convite para cidades vizinhas com botão de WhatsApp e contêiner reservado para o mapa (`data-mapa`; o iframe entra na Parte 3).
+7. **Dúvidas frequentes** (`#duvidas`) — 12 perguntas em 6 temas, com respostas do adestrador vindas do Instagram, usando `<details>`/`<summary>` (funciona sem JS). Foram retiradas as perguntas sobre dominância/hierarquia, pitbulls e tapete higiênico.
+8. **Contato** (`#contato`) — botão grande de WhatsApp com o número (47) 8855-0632 visível, links para Instagram e YouTube e horário de atendimento (a combinar com o adestrador). Sem formulário.
 
 Critérios de aceite:
-- [ ] Todas as 9 seções com layout final em 360, 768 e 1280 px.
-- [ ] Fundos alternando entre branco, cinza claro e preto para separar as seções.
-- [ ] Cada botão "Quero saber mais" abre o WhatsApp com o nome do serviço na mensagem.
-- [ ] Todo dado do cliente ainda não confirmado está com `[A CONFIRMAR: ...]`.
-- [ ] Todo `<img>` tem `alt`, `width` e `height`.
-
-Commit sugerido: `feat: seções de conteúdo da página inicial`.
+- [x] Todas as 8 seções com layout final em 360, 768 e 1280 px.
+- [x] Fundos alternando entre branco, cinza claro e preto para separar as seções.
+- [x] Cada botão "Quero saber mais" abre o WhatsApp com o nome do serviço na mensagem.
+- [x] Nenhum dado do cliente inventado; nenhum `[A CONFIRMAR]` restante no site.
+- [x] Todo `<img>` tem `alt`, `width` e `height`.
 
 ---
 
 ### PARTE 3 — Interatividade e páginas auxiliares
 
-**Objetivo:** deixar tudo funcional: menu mobile, carrossel, lightbox, cookies e páginas extras.
+**Objetivo:** deixar tudo funcional: menu mobile, carrossel, vídeo e mapa sob demanda, cookies e páginas extras.
 
 Tarefas:
 1. **`menu.js`** — menu hambúrguer em tela cheia no mobile; abre/fecha por toque e Esc; fecha ao escolher um item; `aria-expanded` atualizado; trava a rolagem do fundo com o menu aberto.
 2. **`faq.js`** — melhoria progressiva sobre `<details>`: animação suave de abrir/fechar (respeitando `prefers-reduced-motion`).
-3. **`carousel.js`** — depoimentos com botões anterior/próximo, swipe no celular e indicadores; sem avanço automático (ou, se houver, pausa no hover/foco e intervalo ≥ 6 s).
-4. **`lightbox.js`** — ampliar fotos de resultados; navegação por setas, fecha com Esc ou clique fora; foco preso dentro do lightbox enquanto aberto e devolvido ao fechar.
-5. **Vídeos do YouTube sob demanda** — em `#resultados`, cada vídeo aparece primeiro como miniatura com botão de play (imagem local ou `i.ytimg.com`); o iframe `youtube-nocookie.com/embed/<ID>` só é inserido ao clicar. Nenhum script do YouTube carrega antes disso.
-6. **Mapa sob demanda** — iframe do Google Maps centrado em Rio do Sul, inserido via `IntersectionObserver` só quando `#atendimento` aparece na tela.
-7. **`politica-de-privacidade.html`** — estrutura com: responsável (Jhonatan D. / Pet's Mind), dados coletados, finalidade, tempo de guarda, compartilhamento (GitHub Pages, Google, YouTube), direitos do titular e WhatsApp para solicitar exclusão. Texto marcado com aviso de que precisa de revisão pelo responsável.
-8. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Atenção: no GitHub Pages o 404 pode ser servido em qualquer URL; use caminhos que funcionem a partir da raiz do site (ex.: definir `<base href>` com o caminho do repositório ou usar URLs absolutas do domínio final).
-9. **`cookies.js` + GA4** — se `ga4Id` estiver preenchido, exibe banner simples (Aceitar / Recusar); o script do GA4 só carrega após aceitar; escolha salva em `localStorage` (com `try/catch`). Evento: `clique_whatsapp` (com o serviço, se houver).
+3. **`carousel.js`** — depoimentos com botões anterior/próximo, swipe no celular e indicadores (ativar os controles que estão com `hidden`); sem avanço automático. Com 2 depoimentos, os controles só aparecem quando os cartões não cabem lado a lado.
+4. **`video.js`** — vídeo do YouTube sob demanda em `#sobre`: a capa local (`capa-video-historia.webp`) com botão de play continua como link para o YouTube sem JS; com JS, o clique troca a capa pelo iframe `youtube-nocookie.com/embed/<data-youtube-id>`. Nenhum recurso do YouTube carrega antes do clique.
+5. **`mapa.js`** — iframe do Google Maps centrado em Rio do Sul, inserido no contêiner `data-mapa` via `IntersectionObserver` só quando `#atendimento` aparece na tela.
+6. **`politica-de-privacidade.html`** — estrutura com: responsável (Jhonatan D. / Pet's Mind), dados coletados, finalidade, tempo de guarda, compartilhamento (GitHub Pages, Google, YouTube), direitos do titular e WhatsApp para solicitar exclusão. Texto marcado com aviso de que precisa de revisão pelo responsável.
+7. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Atenção: no GitHub Pages o 404 pode ser servido em qualquer URL; use caminhos que funcionem a partir da raiz do site (ex.: definir `<base href>` com o caminho do repositório ou usar URLs absolutas do domínio final).
+8. **`cookies.js` + GA4** — se `ga4Id` estiver preenchido, exibe banner simples (Aceitar / Recusar); o script do GA4 só carrega após aceitar; escolha salva em `localStorage` (com `try/catch`). Evento: `clique_whatsapp` (com o serviço, se houver).
 
 Critérios de aceite:
-- [ ] Menu, FAQ, carrossel e lightbox funcionam com mouse, toque e teclado.
+- [ ] Menu, FAQ e carrossel funcionam com mouse, toque e teclado.
 - [ ] O mapa não carrega até a seção aparecer, e nenhum recurso do YouTube carrega antes do clique no vídeo (verificar na aba Network).
 - [ ] Sem `ga4Id`, nenhum banner e nenhum script do Google é carregado.
 - [ ] As 2 páginas auxiliares seguem a identidade visual e têm cabeçalho/rodapé consistentes.
@@ -284,8 +288,8 @@ Tarefas:
    - `canonical`, Open Graph (`og:title`, `og:description`, `og:image` 1200×630, `og:locale` = `pt_BR`) e Twitter Card.
    - `theme-color` = `#111111`, favicon e `apple-touch-icon`.
 2. **Dados estruturados (JSON-LD)** no `index.html`:
-   - `ProfessionalService` (ou `LocalBusiness`) com nome, telefone `+55-47-8855-0632`, `areaServed` (cidades), horário, logo, `sameAs` (Instagram e YouTube do `config.js`) — valores não confirmados ficam com `[A CONFIRMAR]` e um comentário avisando que devem ser preenchidos antes do lançamento.
-   - `FAQPage` com as perguntas da seção Dúvidas.
+   - `ProfessionalService` (ou `LocalBusiness`) com nome, telefone `+55-47-8855-0632`, `areaServed` (Rio do Sul e região, SC), logo, `priceRange` e `sameAs` (Instagram e YouTube do `config.js`). Sem horário fixo (atendimento a combinar).
+   - `FAQPage` com as 12 perguntas da seção Dúvidas.
 3. **`sitemap.xml`** (index e política) e **`robots.txt`** (permitir tudo e apontar para o sitemap). Usar a URL final do site — se ainda não houver domínio, usar `https://<usuario>.github.io/<repo>/` e deixar comentário para trocar.
 4. **Desempenho:** minimizar CSS/JS crítico, `preload` da fonte do H1 e da imagem do hero, `fetchpriority="high"` na imagem do hero, scripts com `defer`, imagens em WebP com tamanhos adequados. Meta: PageSpeed mobile ≥ 90, LCP < 2,5 s, página inicial < 1,5 MB.
 5. **Revisão de acessibilidade:** rodar Lighthouse; corrigir contraste, ordem de headings, `alt` e foco. Meta: Acessibilidade ≥ 95.
@@ -310,7 +314,7 @@ Commit sugerido: `feat: SEO, desempenho e publicação no GitHub Pages`.
 
 ## 8. Fora do escopo (não implementar agora)
 
-Blog, páginas individuais por serviço/cidade, agendamento online, pagamento online (Pix/link), área do cliente com login, painel administrativo.
+Blog, páginas individuais por serviço/cidade, agendamento online, pagamento online (Pix/link), área do cliente com login, painel administrativo, formulário de contato, seção de resultados (antes/depois), lightbox de fotos, avaliações do Google.
 
 ---
 
