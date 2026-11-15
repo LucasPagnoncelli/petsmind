@@ -202,12 +202,12 @@ Tarefas:
 8. Rolagem suave com compensação da altura do cabeçalho (`scroll-margin-top` nas seções).
 
 Critérios de aceite:
-- [ ] Abrindo `index.html` direto no navegador (ou via `python -m http.server`), não há erros no console nem arquivos 404.
-- [ ] Todos os links do menu levam à seção certa sem o cabeçalho cobrir o título.
-- [ ] Todos os botões de WhatsApp abrem `wa.me/554788550632` com a mensagem certa, em nova aba, usando os dados do `config.js`.
-- [ ] Apagando `whatsappNumero` do `config.js`, os botões passam a abrir o link do WhatsApp Business sem parâmetros extras.
-- [ ] Layout correto em 360 px, 768 px e 1280 px.
-- [ ] Nenhuma cor escrita fora de `variables.css`.
+- [x] Abrindo `index.html` direto no navegador (ou via `python -m http.server`), não há erros no console nem arquivos 404.
+- [x] Todos os links do menu levam à seção certa sem o cabeçalho cobrir o título.
+- [x] Todos os botões de WhatsApp abrem `wa.me/554788550632` com a mensagem certa, em nova aba, usando os dados do `config.js`.
+- [x] Apagando `whatsappNumero` do `config.js`, os botões passam a abrir o link do WhatsApp Business sem parâmetros extras.
+- [x] Layout correto em 360 px, 768 px e 1280 px.
+- [x] Nenhuma cor escrita fora de `variables.css`.
 
 Commit sugerido ao final: `feat: estrutura base, design system, cabeçalho, rodapé e WhatsApp`.
 

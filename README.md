@@ -2,7 +2,7 @@
 
 Site da **Pet's Mind Adestramento**, serviço de adestramento de cães com reforço positivo do adestrador **Jhonatan D.**, em Rio do Sul e região (Alto Vale do Itajaí, SC).
 
-- Landing page de página única, com seções (Início, Sobre, Serviços, Como funciona, Resultados, Depoimentos, Atendimento, Dúvidas e Contato).
+- Landing page de página única, com seções (Início, Sobre, Serviços, Como funciona, Depoimentos, Atendimento, Dúvidas e Contato).
 - Objetivo: gerar contatos pelo WhatsApp.
 - HTML, CSS e JavaScript puros — **sem build step, sem frameworks, sem `npm`**.
 - Hospedado no **GitHub Pages** (site estático).
@@ -27,7 +27,8 @@ assets/
   img/
     logo/                  logo.svg (vetorial), logo-512.png, favicon.ico,
                            apple-touch-icon.png e logo-original.jpg (arquivo enviado)
-    hero/ sobre/ ...       fotos (hero, sobre, resultados, depoimentos)
+    hero/ sobre/           fotos do Jhonatan e capa do vídeo da história
+    depoimentos/           fotos dos cães (somente com autorização)
   fonts/                   Montserrat e Open Sans (.woff2, licença OFL)
 ```
 
