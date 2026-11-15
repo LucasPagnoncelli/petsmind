@@ -259,7 +259,7 @@ Tarefas:
 3. **`carousel.js`** — depoimentos com botões anterior/próximo, swipe no celular e indicadores (ativar os controles que estão com `hidden`); sem avanço automático. Com 2 depoimentos, os controles só aparecem quando os cartões não cabem lado a lado.
 4. **`video.js`** — vídeo do YouTube sob demanda em `#sobre`: a capa local (`capa-video-historia.webp`) com botão de play continua como link para o YouTube sem JS; com JS, o clique troca a capa pelo iframe `youtube-nocookie.com/embed/<data-youtube-id>`. Nenhum recurso do YouTube carrega antes do clique.
 5. **`mapa.js`** — iframe do Google Maps centrado em Rio do Sul, inserido no contêiner `data-mapa` via `IntersectionObserver` só quando `#atendimento` aparece na tela.
-6. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Atenção: no GitHub Pages o 404 pode ser servido em qualquer URL; use caminhos que funcionem a partir da raiz do site (ex.: definir `<base href>` com o caminho do repositório ou usar URLs absolutas do domínio final).
+6. **`404.html`** — pegada, mensagem "Esse caminho o faro não encontrou", botão para o início. Como o GitHub Pages serve o 404 em qualquer URL, a página usa `<base href="/petsmind/">` para os caminhos funcionarem de qualquer nível (em teste local, um script troca para `/`), com os ícones SVG escritos direto no HTML.
 
 Critérios de aceite:
 - [x] Menu, FAQ e carrossel funcionam com mouse, toque e teclado.
