@@ -14,7 +14,6 @@ As regras completas de construção estão em [`CLAUDE.md`](CLAUDE.md).
 ```
 index.html                 página inicial (com meta tags e dados estruturados para o Google)
 404.html                   página de "não encontrado" (servida pelo GitHub Pages)
-sitemap.xml                mapa do site para o Google
 .nojekyll                  desativa o Jekyll no GitHub Pages
 assets/
   css/
@@ -76,14 +75,14 @@ O site fica sempre no GitHub Pages (sem domínio próprio) e não coleta dados d
 2. Faça **commit** e **push** para a branch `main`.
 3. Em cerca de 1 minuto, a nova versão está no ar (acompanhe na aba **Actions** do repositório).
 
-Ao mudar **preços, contatos ou perguntas frequentes**, atualize também os dados estruturados no `<head>` do `index.html` (blocos `application/ld+json`), para o Google mostrar a informação correta. Ao mudar a página, atualize a data em `<lastmod>` no `sitemap.xml`.
+Ao mudar **preços, contatos ou perguntas frequentes**, atualize também os dados estruturados no `<head>` do `index.html` (blocos `application/ld+json`), para o Google mostrar a informação correta.
 
 ## Depois de publicar (conferências)
 
 - **Prévia no WhatsApp:** mande o link <https://lucaspagnoncelli.github.io/petsmind/> para você mesmo e confira título, descrição e imagem. O WhatsApp guarda a prévia em cache; se ela vier antiga, teste com `?v=2` no fim do link.
 - **Dados estruturados:** cole o link no [Teste de Resultados Avançados do Google](https://search.google.com/test/rich-results) e confira se os blocos *Empresa local* e *Perguntas frequentes* são reconhecidos. Como a Pet's Mind não tem endereço físico (atende na casa do tutor), o teste pode avisar que falta o campo "endereço" na empresa local: é esperado e correto.
 - **Desempenho:** rode o link no [PageSpeed Insights](https://pagespeed.web.dev/) (versão para celular).
-- **Google Search Console (recomendado):** em <https://search.google.com/search-console>, adicione a propriedade do tipo **Prefixo do URL** com `https://lucaspagnoncelli.github.io/petsmind/`, faça a verificação (o método "Tag HTML" gera uma linha `<meta>` para colar no `<head>` do `index.html`) e envie o sitemap `sitemap.xml`. Enviar o sitemap pelo Search Console ajuda o Google a encontrar a página mais rápido.
+- **Google Search Console (recomendado):** em <https://search.google.com/search-console>, adicione a propriedade do tipo **Prefixo do URL** com `https://lucaspagnoncelli.github.io/petsmind/`, faça a verificação (o método "Tag HTML" gera uma linha `<meta>` para colar no `<head>` do `index.html`) e use **Inspeção de URL → Solicitar indexação** para o Google encontrar a página mais rápido.
 
 ## Pendências
 
@@ -98,5 +97,5 @@ Passos que dependem de você, fora do código:
 - [x] GitHub Pages ativo (publicação automática a cada push na `main`).
 - [ ] Conferir se "Enforce HTTPS" está marcado em Settings → Pages.
 - [ ] Fazer as conferências da seção "Depois de publicar".
-- [ ] (Opcional) Cadastrar o site no Google Search Console e enviar o sitemap.
+- [ ] (Opcional) Cadastrar o site no Google Search Console e solicitar a indexação.
 - [ ] (Opcional) Trocar as fotos por versões em resolução maior, se houver.

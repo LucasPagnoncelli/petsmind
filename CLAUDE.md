@@ -110,7 +110,6 @@ Próximo, confiante e respeitoso com o animal. Fala com o tutor como "você". Pr
 pets-mind-site/
 ├── index.html
 ├── 404.html
-├── sitemap.xml
 ├── .nojekyll                 (arquivo vazio: desativa o Jekyll no GitHub Pages)
 ├── assets/
 │   ├── css/
@@ -282,7 +281,7 @@ Tarefas:
 2. **Dados estruturados (JSON-LD)** no `index.html`:
    - `ProfessionalService` (ou `LocalBusiness`) com nome, telefone `+55-47-8855-0632`, `areaServed` (Rio do Sul e região, SC), logo, `priceRange` e `sameAs` (Instagram e YouTube do `config.js`). Sem horário fixo (atendimento a combinar).
    - `FAQPage` com as 12 perguntas da seção Dúvidas.
-3. **`sitemap.xml`** (somente a página inicial). Sem `robots.txt`: num site em subpasta do GitHub Pages ele seria ignorado. Usar a URL do site: `https://lucaspagnoncelli.github.io/petsmind/`.
+3. **Sem `sitemap.xml` e sem `robots.txt`:** o site tem uma página só e fica numa subpasta do GitHub Pages, então eles não são necessários. A URL oficial (`canonical` e `og:url`) é `https://lucaspagnoncelli.github.io/petsmind/`.
 4. **Desempenho:** minimizar CSS/JS crítico, `preload` da fonte do H1 e da imagem do hero, `fetchpriority="high"` na imagem do hero, scripts com `defer`, imagens em WebP com tamanhos adequados. Meta: PageSpeed mobile ≥ 90, LCP < 2,5 s, página inicial < 1,5 MB.
 5. **Revisão de acessibilidade:** rodar Lighthouse; corrigir contraste, ordem de headings, `alt` e foco. Meta: Acessibilidade ≥ 95.
 6. **Publicação no GitHub Pages:**
