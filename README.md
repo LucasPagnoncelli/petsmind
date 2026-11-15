@@ -15,7 +15,6 @@ As regras completas de construção estão em [`CLAUDE.md`](CLAUDE.md).
 index.html                 página inicial (com meta tags e dados estruturados para o Google)
 404.html                   página de "não encontrado" (servida pelo GitHub Pages)
 sitemap.xml                mapa do site para o Google
-robots.txt                 permissões para buscadores
 .nojekyll                  desativa o Jekyll no GitHub Pages
 assets/
   css/
@@ -84,7 +83,7 @@ Ao mudar **preços, contatos ou perguntas frequentes**, atualize também os dado
 - **Prévia no WhatsApp:** mande o link <https://lucaspagnoncelli.github.io/petsmind/> para você mesmo e confira título, descrição e imagem. O WhatsApp guarda a prévia em cache; se ela vier antiga, teste com `?v=2` no fim do link.
 - **Dados estruturados:** cole o link no [Teste de Resultados Avançados do Google](https://search.google.com/test/rich-results) e confira se os blocos *Empresa local* e *Perguntas frequentes* são reconhecidos. Como a Pet's Mind não tem endereço físico (atende na casa do tutor), o teste pode avisar que falta o campo "endereço" na empresa local: é esperado e correto.
 - **Desempenho:** rode o link no [PageSpeed Insights](https://pagespeed.web.dev/) (versão para celular).
-- **Google Search Console (recomendado):** em <https://search.google.com/search-console>, adicione a propriedade do tipo **Prefixo do URL** com `https://lucaspagnoncelli.github.io/petsmind/`, faça a verificação (o método "Tag HTML" gera uma linha `<meta>` para colar no `<head>` do `index.html`) e envie o sitemap `sitemap.xml`. Isso é importante porque, num site em subpasta do GitHub Pages, os buscadores leem o `robots.txt` só na raiz do domínio (`lucaspagnoncelli.github.io/robots.txt`), e não o desta pasta; enviar o sitemap pelo Search Console garante que o Google encontre a página.
+- **Google Search Console (recomendado):** em <https://search.google.com/search-console>, adicione a propriedade do tipo **Prefixo do URL** com `https://lucaspagnoncelli.github.io/petsmind/`, faça a verificação (o método "Tag HTML" gera uma linha `<meta>` para colar no `<head>` do `index.html`) e envie o sitemap `sitemap.xml`. Enviar o sitemap pelo Search Console ajuda o Google a encontrar a página mais rápido.
 
 ## Pendências
 
