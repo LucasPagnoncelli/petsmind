@@ -38,7 +38,7 @@ Todos esses valores ficam em `assets/js/config.js` (seção 5) e são lidos de l
 | Formações | Não possui; destacar a experiência prática |
 | História | Começou treinando cães resgatados pela ONG PAD (não citar a cidade da ONG); reportagem na TV da região; método próprio desenvolvido na prática |
 | Método | Reforço positivo |
-| Atendimento | Na casa do tutor, em Rio do Sul e região (sem lista de cidades) |
+| Atendimento | Na casa do tutor, em Rio do Sul e região (sem lista de cidades e sem endereço físico — não usar endereço no JSON-LD) |
 | Horário | A combinar com o adestrador |
 | Preços | Avaliação R$ 120 · Filhotes a partir de R$ 600 · Obediência a partir de R$ 800 · Passeio a partir de R$ 500 · Correção a partir de R$ 900 · Reativos a partir de R$ 1.200 (valores de referência) |
 | Vídeo do canal | "Conheça um pouco da minha história como adestrador" — ID `eS8RAt--nu4` |
