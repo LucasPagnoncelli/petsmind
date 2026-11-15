@@ -57,7 +57,9 @@ python3 -m http.server 8000
 
 Depois acesse <http://localhost:8000>.
 
-## Como publicar (GitHub Pages) — feito uma única vez
+## Como publicar (GitHub Pages) — já feito
+
+O GitHub Pages já está ativo neste repositório (cada push na `main` é publicado automaticamente). Os passos abaixo ficam como referência, caso seja preciso reativar:
 
 1. No GitHub, abra o repositório e vá em **Settings → Pages**.
 2. Em **Build and deployment → Source**, escolha **"Deploy from a branch"**.
@@ -94,7 +96,8 @@ grep -rn "A CONFIRMAR" --exclude=CLAUDE.md --exclude=README.md .
 
 Passos que dependem de você, fora do código:
 
-- [ ] Ativar o GitHub Pages e o "Enforce HTTPS" (seção "Como publicar").
+- [x] GitHub Pages ativo (publicação automática a cada push na `main`).
+- [ ] Conferir se "Enforce HTTPS" está marcado em Settings → Pages.
 - [ ] Fazer as conferências da seção "Depois de publicar".
 - [ ] (Opcional) Cadastrar o site no Google Search Console e enviar o sitemap.
 - [ ] (Opcional) Trocar as fotos por versões em resolução maior, se houver.
