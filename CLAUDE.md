@@ -197,7 +197,7 @@ Tarefas:
 2. Criar `variables.css` (cores, fontes, escala de espaçamento em múltiplos de 8 px, larguras de container: 1200 px máx.), `base.css` (reset moderno, tipografia, `.container`, botões `.btn--primario` amarelo/preto, `.btn--secundario` contorno, `.btn--whatsapp`) e `sections.css` (vazio, com comentários por seção).
 3. Criar `index.html` com `<head>` completo (charset, viewport, title e description provisórios, favicon, CSS) e o esqueleto de todas as seções com `id`s: `inicio`, `sobre`, `servicos`, `como-funciona`, `depoimentos`, `atendimento`, `duvidas`, `contato`.
 4. **Cabeçalho fixo:** logo (link para `#inicio`), menu com âncoras (Início · Sobre · Serviços · Como funciona · Depoimentos · Dúvidas · Contato), botão "Agendar avaliação" (WhatsApp). O cabeçalho encolhe ao rolar.
-5. **Rodapé:** logo, frase curta, links do menu, ícones com link para Instagram e YouTube (de `config.js`, com `aria-label`), WhatsApp (47) 8855-0632, "Rio do Sul e região — SC", link para Política de Privacidade, "© 2026 Pet's Mind Adestramento".
+5. **Rodapé:** logo, frase curta, links do menu, ícones com link para Instagram e YouTube (de `config.js`, com `aria-label`), WhatsApp (47) 8855-0632, "Rio do Sul e região — SC", "© 2026 Pet's Mind Adestramento".
 6. **Botão flutuante de WhatsApp** (canto inferior direito, verde `--cor-whatsapp`, com `aria-label`).
 7. Criar `config.js` e `whatsapp.js` (seção 5).
 8. Rolagem suave com compensação da altura do cabeçalho (`scroll-margin-top` nas seções).
