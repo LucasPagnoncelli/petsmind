@@ -48,7 +48,7 @@ Todos esses valores ficam em `assets/js/config.js` (seção 5) e são lidos de l
 
 ## 2. Regras de trabalho (obrigatórias)
 
-1. **Execute uma parte por vez.** O projeto está dividido em 4 partes (seção 7). Ao terminar uma parte, pare, resuma o que foi feito, liste os critérios de aceite atendidos e **aguarde confirmação** antes de iniciar a próxima.
+1. **Execute uma parte por vez.** O projeto está dividido em 6 partes (seção 7). Ao terminar uma parte, pare, resuma o que foi feito, liste os critérios de aceite atendidos e **aguarde confirmação** antes de iniciar a próxima.
 2. **Nunca invente conteúdo do cliente.** Use os dados confirmados das seções 1.1 e 1.2. Preços, e-mail, cidades atendidas, formações, número de cães atendidos, anos de experiência e depoimentos devem usar o marcador:
    `[A CONFIRMAR: descrição]` — ex.: `[A CONFIRMAR: preço da avaliação]`.
    Depoimentos de exemplo devem ser claramente marcados como exemplo e nunca parecer reais.
@@ -124,7 +124,10 @@ pets-mind-site/
 │   │   ├── faq.js
 │   │   ├── carousel.js
 │   │   ├── video.js          (vídeo do YouTube sob demanda — Parte 3)
-│   │   └── mapa.js           (mapa sob demanda — Parte 3)
+│   │   ├── mapa.js           (mapa sob demanda — Parte 3)
+│   │   ├── sinais.js         (lista de sinais → treino indicado — Parte 5)
+│   │   ├── quiz.js           (teste "Qual serviço é ideal?" — Parte 5)
+│   │   └── compartilhar.js   (botão "Indique para um amigo" — Parte 5)
 │   ├── img/
 │   │   ├── logo/             (logo.svg, logo-512.png, favicon.ico, apple-touch-icon.png)
 │   │   ├── hero/             (jhonatan-com-cao.webp)
@@ -157,11 +160,13 @@ window.PETSMIND_CONFIG = {
   whatsappLink: "https://api.whatsapp.com/message/PCRETT4YYIHWI1?autoload=1&app_absent=0",
   email: "",                             // a empresa não possui e-mail
   instagram: "https://www.instagram.com/petsmind.adestramento/",
-  youtube: "https://www.youtube.com/@petsmind.adestramento"
+  youtube: "https://www.youtube.com/@petsmind.adestramento",
+  // Texto do botão "Indique para um amigo" (o endereço do site é acrescentado no fim)
+  mensagemIndicacao: "Conheça a Pet's Mind Adestramento: adestramento de cães com reforço positivo, na sua casa, em Rio do Sul e região."
 };
 ```
 
-  Todo botão de WhatsApp usa o atributo `data-whatsapp` (e opcionalmente `data-servico="Nome do serviço"`). O `whatsapp.js` preenche o `href` e adiciona `target="_blank"` e `rel="noopener"`:
+  Todo botão de WhatsApp usa o atributo `data-whatsapp` (e opcionalmente `data-servico="Nome do serviço"` ou `data-mensagem="texto completo"`, que tem prioridade e é usado pelo quiz e pela lista de sinais). O `whatsapp.js` preenche o `href` ao carregar e de novo no clique, e adiciona `target="_blank"` e `rel="noopener"`:
   - **Com `whatsappNumero` preenchido (padrão):** `https://wa.me/<whatsappNumero>?text=<mensagem codificada com encodeURIComponent>`. Sem `data-servico`, usa `mensagemPadrao`; com `data-servico`, usa `mensagemServico + nome do serviço`.
   - **Com `whatsappNumero` vazio:** usa `whatsappLink` exatamente como está, **sem** acrescentar parâmetros (o link do WhatsApp Business não aceita texto extra).
   - Nenhum link ou número de WhatsApp escrito direto no HTML: o número visível (ex.: no rodapé e no contato) é preenchido pelo JS a partir de `whatsappExibicao`, com o texto `(47) 8855-0632` no HTML como alternativa caso o JS não carregue.
@@ -180,7 +185,7 @@ window.PETSMIND_CONFIG = {
 
 ---
 
-## 7. Plano de construção em 4 partes
+## 7. Plano de construção em 6 partes
 
 ### PARTE 1 — Fundação e estrutura ✅ concluída
 
@@ -299,6 +304,49 @@ Critérios de aceite:
 - [x] README com instruções de publicação, atualização e lista de pendências.
 
 Commit sugerido: `feat: SEO, desempenho e publicação no GitHub Pages`.
+
+---
+
+### PARTE 5 — Ferramentas para o tutor ✅ concluída
+
+**Objetivo:** ajudar o visitante a descobrir o serviço certo e levar a conversa para o WhatsApp já com as informações do cão. Nada é salvo nem enviado pelo site.
+
+Ordem das seções após esta parte: Início · Sobre · **Sinais** · Serviços · **Qual serviço?** · Como funciona · Depoimentos · Atendimento · Dúvidas · Contato.
+
+Tarefas:
+1. **Seção "Seu cão precisa de ajuda?"** (`#sinais`, `sinais.js`) — 11 comportamentos para marcar, cada um ligado a um serviço da tabela da Parte 2. O resultado mostra o treino indicado (maioria das marcações; em empate, reatividade e medo primeiro), os outros que podem ajudar e um botão de WhatsApp com a lista marcada (`data-mensagem`). Sem JS, a lista aparece como texto e o botão leva a mensagem padrão.
+2. **Seção "Qual serviço é ideal para o seu cão?"** (`#qual-servico`, `quiz.js`) — 4 perguntas, uma por vez (idade, principal desafio, porte e nome do cão, opcional), com barra de progresso, "Voltar" e "Refazer". A indicação usa só os serviços da tabela; descrição e preço são lidos do cartão do serviço (fonte única). Lembra que todo novo cliente começa pela avaliação e, para cão idoso, que ele também aprende (resposta da seção Dúvidas). Botão de WhatsApp com as respostas. Sem JS, aparece só um convite para o WhatsApp.
+3. **Comparativo dos serviços** (dentro de `#servicos`) — `<details>` "Comparar todos os serviços" com tabela (para quem, o que resolve, valor de referência) e nota "atendimento na sua casa, com reforço positivo". No celular, a tabela rola para o lado com a 1ª coluna fixa. Não inclui "o que está incluso", porque isso não foi informado pelo cliente.
+4. **Botão "Indique para um amigo"** (dentro de `#contato`, `compartilhar.js`) — usa o menu de compartilhar do celular (Web Share API) e, onde não houver, abre o WhatsApp para escolher o contato. Compartilha `mensagemIndicacao` + o endereço oficial (`canonical`). Sem JS, fica escondido.
+5. **Manutenção:** ao mudar um serviço ou preço, atualizar o cartão, a tabela do comparativo e o JSON-LD (o quiz se atualiza sozinho pelo cartão).
+
+Critérios de aceite:
+- [x] Lista de sinais, quiz, comparativo e botão de indicar funcionam com mouse, toque e teclado, em 360, 768 e 1280 px.
+- [x] As mensagens de WhatsApp do quiz e dos sinais levam as respostas e a indicação; nenhum dado é salvo ou enviado pelo site.
+- [x] Sem JS, nada fica quebrado (convite para o WhatsApp no lugar do quiz; lista e comparativo continuam legíveis).
+- [x] Lighthouse mobile mantém Desempenho ≥ 90, Acessibilidade ≥ 95, Boas práticas ≥ 90, SEO ≥ 95.
+
+Commit sugerido: `feat: ferramentas para o tutor (sinais, quiz, comparativo e indicação)`.
+
+---
+
+### PARTE 6 — Divulgação, app e manutenção (planejada)
+
+**Objetivo:** ajudar a divulgar o site fora dele e facilitar a manutenção.
+
+Tarefas:
+1. **Página de links para a bio do Instagram** (`links.html`) — estilo "Linktree" com a identidade da marca: WhatsApp, serviços, teste "Qual serviço?", vídeo e YouTube. Mesmas regras de caminhos relativos e WhatsApp via `config.js`.
+2. **Material de divulgação para imprimir** (`divulgacao.html`) — cartão de visita e panfleto prontos para impressão (CSS `@media print`), com QR Code para o site e para o WhatsApp, gerado como imagem local (sem serviço externo).
+3. **Site instalável no celular (PWA)** — `manifest.webmanifest` com nome, cores e ícones da marca, e `service-worker.js` simples para abrir mesmo sem internet. Escopo `/petsmind/`.
+4. **Verificação automática a cada atualização** — GitHub Actions que confere a cada push: HTML válido, links internos e arquivos existentes, e notas do Lighthouse (sem build do site; só testes).
+
+Critérios de aceite:
+- [ ] Página de links e material de divulgação seguem a identidade visual e funcionam em 360 px; o material imprime corretamente em A4.
+- [ ] O site pode ser instalado na tela inicial do celular e abre sem internet.
+- [ ] A verificação automática roda a cada push e mostra o resultado na aba Actions.
+- [ ] Lighthouse mobile mantém as metas da Parte 4.
+
+Commit sugerido: `feat: divulgação, PWA e verificação automática`.
 
 ---
 

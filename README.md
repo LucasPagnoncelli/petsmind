@@ -2,7 +2,7 @@
 
 Site da **Pet's Mind Adestramento**, serviço de adestramento de cães com reforço positivo do adestrador **Jhonatan D.**, em Rio do Sul e região (Alto Vale do Itajaí, SC).
 
-- Landing page de página única, com seções (Início, Sobre, Serviços, Como funciona, Depoimentos, Atendimento, Dúvidas e Contato).
+- Landing page de página única, com seções (Início, Sobre, Sinais, Serviços, Qual serviço?, Como funciona, Depoimentos, Atendimento, Dúvidas e Contato).
 - Objetivo: gerar contatos pelo WhatsApp.
 - HTML, CSS e JavaScript puros — **sem build step, sem frameworks, sem `npm`**.
 - Hospedado no **GitHub Pages** (site estático): <https://lucaspagnoncelli.github.io/petsmind/>
@@ -29,6 +29,9 @@ assets/
     carousel.js            botões e indicadores do carrossel de depoimentos
     video.js               vídeo do YouTube só carrega ao clicar
     mapa.js                mapa só carrega quando a seção aparece
+    sinais.js              lista "Seu cão precisa de ajuda?" → treino indicado
+    quiz.js                teste "Qual serviço é ideal?" → indicação + WhatsApp
+    compartilhar.js        botão "Indique para um amigo"
   img/
     logo/                  logo.svg (vetorial), logo-512.png, favicon.ico,
                            apple-touch-icon.png e logo-original.jpg (arquivo enviado)
@@ -42,7 +45,8 @@ assets/
 
 Todos os dados de contato ficam em **`assets/js/config.js`**. Para trocar o número do WhatsApp, a mensagem padrão ou os links das redes sociais, edite somente esse arquivo.
 
-- Botões de WhatsApp usam o atributo `data-whatsapp` (e, opcionalmente, `data-servico="Nome do serviço"` para personalizar a mensagem).
+- Botões de WhatsApp usam o atributo `data-whatsapp` (e, opcionalmente, `data-servico="Nome do serviço"` ou `data-mensagem="texto completo"` para personalizar a mensagem; o quiz e a lista de sinais usam `data-mensagem`).
+- O texto do botão "Indique para um amigo" fica em `mensagemIndicacao`.
 - Se `whatsappNumero` ficar vazio, os botões passam a usar o link do WhatsApp Business (`whatsappLink`), sem parâmetros extras.
 
 ## Como rodar localmente
@@ -75,7 +79,7 @@ O site fica sempre no GitHub Pages (sem domínio próprio) e não coleta dados d
 2. Faça **commit** e **push** para a branch `main`.
 3. Em cerca de 1 minuto, a nova versão está no ar (acompanhe na aba **Actions** do repositório).
 
-Ao mudar **preços, contatos ou perguntas frequentes**, atualize também os dados estruturados no `<head>` do `index.html` (blocos `application/ld+json`), para o Google mostrar a informação correta.
+Ao mudar **um serviço ou preço**, atualize três lugares no `index.html`: o cartão do serviço, a tabela "Comparar todos os serviços" e os dados estruturados no `<head>` (blocos `application/ld+json`). O quiz lê os dados direto dos cartões e se atualiza sozinho; mantenha o nome do serviço igual no `data-servico` do cartão. Ao mudar **contatos ou perguntas frequentes**, atualize também os dados estruturados.
 
 ## Depois de publicar (conferências)
 

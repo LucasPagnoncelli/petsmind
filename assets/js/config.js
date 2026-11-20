@@ -13,5 +13,7 @@ window.PETSMIND_CONFIG = {
   whatsappLink: "https://api.whatsapp.com/message/PCRETT4YYIHWI1?autoload=1&app_absent=0",
   email: "",                             // a empresa não possui e-mail
   instagram: "https://www.instagram.com/petsmind.adestramento/",
-  youtube: "https://www.youtube.com/@petsmind.adestramento"
+  youtube: "https://www.youtube.com/@petsmind.adestramento",
+  // Texto do botão "Indique para um amigo" (o endereço do site é acrescentado no fim)
+  mensagemIndicacao: "Conheça a Pet's Mind Adestramento: adestramento de cães com reforço positivo, na sua casa, em Rio do Sul e região."
 };

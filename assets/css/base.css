@@ -110,9 +110,10 @@ button {
   cursor: pointer;
 }
 
-/* O atributo hidden precisa vencer o display:block do reset (ex.: <svg hidden>) */
+/* O atributo hidden precisa vencer qualquer display definido por classe
+   (ex.: <svg hidden>, botões .btn escondidos pelo JS) */
 [hidden] {
-  display: none;
+  display: none !important; /* exceção justificada: hidden deve sempre esconder */
 }
 
 ul[role="list"],

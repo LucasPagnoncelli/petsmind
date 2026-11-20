@@ -649,6 +649,109 @@
 
 
 /* ==========================================================================
+   Sinais de que o cão precisa de ajuda (#sinais) — sinais.js
+   ========================================================================== */
+.sinais__caixa {
+  display: grid;
+  gap: var(--esp-4);
+  max-width: 960px;
+  margin-inline: auto;
+  padding: var(--esp-3);
+}
+
+.sinais__lista {
+  display: grid;
+  gap: var(--esp-1);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Cada comportamento é uma "pílula" clicável com caixa de seleção */
+.sinal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: var(--esp-1) var(--esp-2);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-cartao);
+  background-color: var(--cor-branco);
+  cursor: pointer;
+  transition: border-color var(--transicao), background-color var(--transicao);
+}
+
+.sinal:hover {
+  border-color: var(--cor-preto);
+}
+
+.sinal:has(.sinal__caixa:checked) {
+  border-color: var(--cor-preto);
+  background-color: var(--cor-amarelo);
+}
+
+.sinal:has(.sinal__caixa:focus-visible) {
+  outline: 3px solid var(--cor-amarelo);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--cor-preto);
+}
+
+.sinal__caixa {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--cor-preto);
+}
+
+.sinal__caixa:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.sinais__resposta {
+  display: grid;
+  align-content: start;
+  gap: var(--esp-2);
+}
+
+.sinais__vazio {
+  color: var(--cor-cinza-texto);
+}
+
+.sinais__resultado {
+  padding: var(--esp-2) var(--esp-3);
+  border-left: 6px solid var(--cor-amarelo);
+  border-radius: 0 var(--raio-cartao) var(--raio-cartao) 0;
+  background-color: var(--cor-preto);
+  color: var(--cor-branco);
+}
+
+.sinais__titulo {
+  margin-bottom: var(--esp-1);
+  color: var(--cor-amarelo);
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-titulo);
+}
+
+.sinais__extra {
+  color: var(--cor-texto-claro-secundario);
+  font-size: var(--fs-pequeno);
+}
+
+@media (min-width: 768px) {
+  .sinais__caixa {
+    padding: var(--esp-5);
+  }
+
+  .sinais__lista {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* ==========================================================================
    Serviços (#servicos) — grade 1 / 2 / 3 colunas
    ========================================================================== */
 .servicos__grade {
@@ -718,6 +821,316 @@
   .servicos__grade {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--esp-4);
+  }
+}
+
+
+/* Link "faça o teste rápido" no texto de abertura */
+.servicos .secao__texto a {
+  color: var(--cor-preto);
+  font-weight: 600;
+}
+
+/* Comparativo dos serviços (<details> com tabela) */
+.comparativo {
+  max-width: 960px;
+  margin: var(--esp-4) auto 0;
+}
+
+.comparativo__botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.comparativo__botao::-webkit-details-marker {
+  display: none;
+}
+
+.comparativo__botao::after {
+  content: " +";
+  white-space: pre;
+}
+
+.comparativo[open] .comparativo__botao::after {
+  content: " −";
+}
+
+/* No celular, a tabela rola para o lado com a 1ª coluna fixa */
+.comparativo__rolagem {
+  margin-top: var(--esp-2);
+  overflow-x: auto;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-cartao);
+}
+
+.comparativo__tabela {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: var(--fs-pequeno);
+  text-align: left;
+}
+
+.comparativo__tabela th,
+.comparativo__tabela td {
+  padding: 12px var(--esp-2);
+  border-bottom: 1px solid var(--cor-borda);
+  vertical-align: top;
+}
+
+.comparativo__tabela thead th {
+  background-color: var(--cor-preto);
+  color: var(--cor-branco);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+}
+
+.comparativo__tabela tbody th {
+  position: sticky;
+  left: 0;
+  min-width: 150px;
+  background-color: var(--cor-cinza-claro);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+}
+
+.comparativo__tabela tbody td {
+  background-color: var(--cor-branco);
+  color: var(--cor-cinza-texto);
+}
+
+.comparativo__tabela tbody td:last-child {
+  color: var(--cor-preto);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.comparativo__tabela tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.comparativo__nota {
+  margin-top: var(--esp-2);
+  color: var(--cor-cinza-texto);
+  font-size: var(--fs-pequeno);
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   Qual serviço é ideal? (#qual-servico) — quiz.js
+   Sem JS: só o convite para o WhatsApp. Com JS: o teste.
+   ========================================================================== */
+.quiz-sem-js {
+  text-align: center;
+}
+
+.js .quiz-sem-js {
+  display: none;
+}
+
+.quiz {
+  display: none;
+  max-width: 720px;
+  margin-inline: auto;
+  padding: var(--esp-3);
+}
+
+.js .quiz {
+  display: block;
+}
+
+.quiz__topo {
+  margin-bottom: var(--esp-3);
+}
+
+.quiz__progresso {
+  margin-bottom: var(--esp-1);
+  color: var(--cor-cinza-texto);
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-pequeno);
+  font-weight: 700;
+}
+
+.quiz__trilho {
+  height: 8px;
+  overflow: hidden;
+  border-radius: var(--raio-pilula);
+  background-color: var(--cor-cinza-claro);
+}
+
+.quiz__barra {
+  width: 25%;
+  height: 100%;
+  border-radius: var(--raio-pilula);
+  background-color: var(--cor-preto);
+  transition: width var(--transicao);
+}
+
+.quiz__etapa {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.quiz__pergunta {
+  display: block;
+  margin-bottom: var(--esp-2);
+  padding: 0;
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-titulo);
+}
+
+/* Recebe foco por programação (leitor de tela): sem anel visível */
+.quiz__pergunta:focus,
+.quiz__pergunta:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.quiz__opcional {
+  color: var(--cor-cinza-texto);
+  font-size: var(--fs-pequeno);
+  font-weight: 600;
+}
+
+.quiz__opcoes {
+  display: grid;
+  gap: var(--esp-1);
+}
+
+/* Opções como cartões clicáveis (o rádio continua acessível) */
+.quiz__opcao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: var(--esp-1) var(--esp-2);
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio-cartao);
+  background-color: var(--cor-branco);
+  cursor: pointer;
+  transition: border-color var(--transicao), background-color var(--transicao);
+}
+
+.quiz__opcao:hover {
+  border-color: var(--cor-preto);
+}
+
+.quiz__opcao input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--cor-preto);
+}
+
+.quiz__opcao:has(input:checked) {
+  border-color: var(--cor-preto);
+  background-color: var(--cor-amarelo);
+  font-weight: 600;
+}
+
+.quiz__opcao:has(input:focus-visible) {
+  outline: 3px solid var(--cor-amarelo);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--cor-preto);
+}
+
+.quiz__opcao input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.quiz__campo {
+  width: 100%;
+  min-height: 52px;
+  padding: 10px 14px;
+  border: 2px solid var(--cor-cinza-texto);
+  border-radius: var(--raio-cartao);
+  background-color: var(--cor-branco);
+  color: var(--cor-preto);
+  font-size: 1rem;
+}
+
+.quiz__aviso {
+  min-height: 1.6em;
+  margin: var(--esp-1) 0;
+  color: var(--cor-preto);
+  font-size: var(--fs-pequeno);
+  font-weight: 600;
+}
+
+.quiz__navegacao {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--esp-2);
+}
+
+.quiz__navegacao [data-quiz-avancar] {
+  margin-left: auto;
+}
+
+.quiz__navegacao[hidden] {
+  display: none;
+}
+
+.quiz__resultado-titulo {
+  margin-bottom: var(--esp-2);
+}
+
+/* Recebe foco por programação (leitor de tela): sem anel visível */
+.quiz__resultado-titulo:focus,
+.quiz__resultado-titulo:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.quiz__detalhes {
+  display: grid;
+  gap: var(--esp-2);
+  margin: 0 0 var(--esp-2);
+  padding: var(--esp-2) var(--esp-3);
+  border-left: 6px solid var(--cor-amarelo);
+  border-radius: 0 var(--raio-cartao) var(--raio-cartao) 0;
+  background-color: var(--cor-cinza-claro);
+}
+
+.quiz__detalhes dt {
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-pequeno);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.quiz__detalhes dd {
+  margin: 0;
+  color: var(--cor-cinza-texto);
+}
+
+.quiz__notas {
+  margin-bottom: var(--esp-3);
+  color: var(--cor-cinza-texto);
+  font-size: var(--fs-pequeno);
+}
+
+@media (min-width: 768px) {
+  .quiz {
+    padding: var(--esp-5);
+  }
+
+  .quiz__opcoes--linha {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1225,6 +1638,20 @@
 
 .contato__item {
   color: var(--cor-texto-claro-secundario);
+}
+
+.contato__indicar {
+  display: grid;
+  justify-items: center;
+  gap: var(--esp-2);
+  margin-top: var(--esp-5);
+  padding-top: var(--esp-4);
+  border-top: 1px solid var(--cor-borda-escura);
+  color: var(--cor-texto-claro-secundario);
+}
+
+.contato__indicar[hidden] {
+  display: none;
 }
 
 

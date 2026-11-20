@@ -254,6 +254,9 @@
   <script src="assets/js/carousel.js" defer></script>
   <script src="assets/js/video.js" defer></script>
   <script src="assets/js/mapa.js" defer></script>
+  <script src="assets/js/sinais.js" defer></script>
+  <script src="assets/js/quiz.js" defer></script>
+  <script src="assets/js/compartilhar.js" defer></script>
 </head>
 <body>
   <!-- Ícones (estilo Lucide), reutilizados via elemento use -->
@@ -329,6 +332,10 @@
     </symbol>
     <symbol id="icone-abrir" viewBox="0 0 24 24">
       <path d="m6 9 6 6 6-6"/>
+    </symbol>
+    <symbol id="icone-compartilhar" viewBox="0 0 24 24">
+      <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+      <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
     </symbol>
     <symbol id="icone-relogio" viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
@@ -444,12 +451,87 @@
       </div>
     </section>
 
+    <!-- ===================== SINAIS ===================== -->
+    <section class="secao secao--cinza sinais" id="sinais" aria-labelledby="sinais-titulo">
+      <div class="container">
+        <header class="secao__cabecalho secao__cabecalho--centro">
+          <h2 class="secao__titulo" id="sinais-titulo">Seu cão precisa de ajuda?</h2>
+          <p class="secao__texto">Marque o que acontece aí na sua casa e veja qual treino é indicado. Nada fica salvo.</p>
+        </header>
+        <div class="sinais__caixa cartao" data-sinais>
+          <fieldset class="sinais__lista">
+            <legend class="visualmente-oculto">Comportamentos do seu cão</legend>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="puxa muito na guia" data-rotulo="puxa muito na guia" data-servico-indicado="Passeio sem puxões">
+                <span>Puxa muito na guia durante o passeio</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="não vem quando é chamado" data-rotulo="não vem quando é chamado" data-servico-indicado="Obediência básica">
+                <span>Não vem quando é chamado</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="não obedece comandos básicos" data-rotulo="não obedece comandos básicos" data-servico-indicado="Obediência básica">
+                <span>Não obedece comandos como senta, deita e fica</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="late demais" data-rotulo="late demais" data-servico-indicado="Correção de comportamento">
+                <span>Late demais</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="pula nas pessoas" data-rotulo="pula nas pessoas" data-servico-indicado="Correção de comportamento">
+                <span>Pula nas pessoas</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="destrói objetos e móveis" data-rotulo="destrói objetos e móveis" data-servico-indicado="Correção de comportamento">
+                <span>Destrói objetos e móveis</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="fica ansioso quando está sozinho" data-rotulo="fica ansioso quando está sozinho" data-servico-indicado="Correção de comportamento">
+                <span>Fica ansioso, chora ou late quando fica sozinho</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="é filhote e faz xixi fora do lugar" data-rotulo="é filhote e faz xixi fora do lugar" data-servico-indicado="Educação de filhotes">
+                <span>É filhote e faz xixi fora do lugar</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="é filhote e morde mãos e pés" data-rotulo="é filhote e morde mãos e pés" data-servico-indicado="Educação de filhotes">
+                <span>É filhote e morde mãos e pés</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="reage a outros cães, pessoas ou veículos" data-rotulo="reage a outros cães, pessoas ou veículos" data-servico-indicado="Cães reativos">
+                <span>Late ou avança em outros cães, pessoas ou veículos</span>
+              </label>
+              <label class="sinal">
+                <input class="sinal__caixa" type="checkbox" value="tem muito medo de pessoas ou de outros cães" data-rotulo="tem muito medo de pessoas ou de outros cães" data-servico-indicado="Cães reativos">
+                <span>Tem muito medo de pessoas ou de outros cães</span>
+              </label>
+          </fieldset>
+          <div class="sinais__resposta">
+            <div aria-live="polite">
+              <p class="sinais__vazio" data-sinais-vazio hidden>Marque um ou mais comportamentos para ver a indicação.</p>
+              <div class="sinais__resultado" data-sinais-resultado hidden>
+                <p class="sinais__titulo" data-sinais-titulo></p>
+                <p class="sinais__extra" data-sinais-extra></p>
+              </div>
+            </div>
+            <div class="botoes">
+              <a class="btn btn--whatsapp" href="#contato" data-whatsapp data-sinais-whatsapp>
+                <svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-whatsapp"/></svg>
+                <span>Conversar sobre o meu cão</span>
+              </a>
+              <button class="btn btn--secundario" type="button" data-sinais-limpar hidden>Limpar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== SERVIÇOS ===================== -->
-    <section class="secao secao--cinza servicos" id="servicos" aria-labelledby="servicos-titulo">
+    <section class="secao secao--clara servicos" id="servicos" aria-labelledby="servicos-titulo">
       <div class="container">
         <header class="secao__cabecalho secao__cabecalho--centro">
           <h2 class="secao__titulo" id="servicos-titulo">Serviços</h2>
-          <p class="secao__texto">Escolha o que mais combina com o momento do seu cão. Na dúvida, comece pela avaliação.</p>
+          <p class="secao__texto">Escolha o que mais combina com o momento do seu cão. Na dúvida, comece pela avaliação ou <a href="#qual-servico">faça o teste rápido</a>.</p>
         </header>
         <ul class="servicos__grade">
           <li class="servico-card cartao">
@@ -550,6 +632,186 @@
           </li>
         </ul>
         <p class="servicos__nota">Valores de referência. O valor final é combinado depois da avaliação, de acordo com o número de aulas e as necessidades do seu cão.</p>
+        <details class="comparativo">
+          <summary class="comparativo__botao">Comparar todos os serviços</summary>
+          <div class="comparativo__rolagem" tabindex="0" role="region" aria-label="Tabela comparativa dos serviços">
+            <table class="comparativo__tabela">
+              <caption class="visualmente-oculto">Comparativo dos serviços da Pet's Mind: para quem é, o que resolve e valor de referência</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Serviço</th>
+                  <th scope="col">Para quem</th>
+                  <th scope="col">O que resolve</th>
+                  <th scope="col">Valor de referência</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">Avaliação comportamental</th>
+                <td>Todo novo cliente</td>
+                <td>Diagnóstico e plano de treino</td>
+                <td>R$ 120</td>
+              </tr>
+              <tr>
+                <th scope="row">Educação de filhotes</th>
+                <td>Cães até 6 meses</td>
+                <td>Xixi no lugar, mordidas, socialização</td>
+                <td>A partir de R$ 600</td>
+              </tr>
+              <tr>
+                <th scope="row">Obediência básica</th>
+                <td>Filhotes e adultos</td>
+                <td>Senta, deita, fica, vem, junto</td>
+                <td>A partir de R$ 800</td>
+              </tr>
+              <tr>
+                <th scope="row">Passeio sem puxões</th>
+                <td>Cães que puxam na guia</td>
+                <td>Caminhar ao lado, foco no tutor</td>
+                <td>A partir de R$ 500</td>
+              </tr>
+              <tr>
+                <th scope="row">Correção de comportamento</th>
+                <td>Cães com problemas específicos</td>
+                <td>Latidos, pulos, destruição, ansiedade de separação</td>
+                <td>A partir de R$ 900</td>
+              </tr>
+              <tr>
+                <th scope="row">Cães reativos</th>
+                <td>Cães medrosos ou agressivos</td>
+                <td>Reação a outros cães, pessoas ou veículos</td>
+                <td>A partir de R$ 1.200</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="comparativo__nota">Todos os atendimentos são feitos na sua casa, em Rio do Sul e região, com reforço positivo.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===================== QUAL SERVIÇO (QUIZ) ===================== -->
+    <section class="secao secao--cinza qual-servico" id="qual-servico" aria-labelledby="qual-servico-titulo">
+      <div class="container">
+        <header class="secao__cabecalho secao__cabecalho--centro">
+          <h2 class="secao__titulo" id="qual-servico-titulo">Qual serviço é ideal para o seu cão?</h2>
+          <p class="secao__texto">Responda 4 perguntas rápidas e veja a indicação. Nada fica salvo: as respostas só vão para o WhatsApp se você quiser.</p>
+        </header>
+
+        <!-- Sem JS, o teste não funciona: fica só o convite para o WhatsApp -->
+        <div class="quiz-sem-js">
+          <a class="btn btn--whatsapp" href="#contato" data-whatsapp>
+            <svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-whatsapp"/></svg>
+            <span>Pedir uma indicação no WhatsApp</span>
+          </a>
+        </div>
+
+        <div class="quiz cartao" data-quiz>
+          <div class="quiz__topo">
+            <p class="quiz__progresso" data-quiz-progresso aria-live="polite">Pergunta 1 de 4</p>
+            <div class="quiz__trilho" aria-hidden="true"><div class="quiz__barra" data-quiz-barra></div></div>
+          </div>
+          <form class="quiz__form" novalidate>
+            <fieldset class="quiz__etapa" data-quiz-etapa>
+              <legend class="quiz__pergunta">Qual a idade do seu cão?</legend>
+              <div class="quiz__opcoes">
+                  <label class="quiz__opcao">
+                    <input type="radio" name="idade" value="filhote" data-rotulo="filhote">
+                    <span>Até 6 meses</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="idade" value="adulto" data-rotulo="adulto">
+                    <span>De 6 meses a 7 anos</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="idade" value="idoso" data-rotulo="idoso">
+                    <span>Mais de 7 anos</span>
+                  </label>
+              </div>
+            </fieldset>
+            <fieldset class="quiz__etapa" data-quiz-etapa hidden>
+              <legend class="quiz__pergunta">Qual o principal desafio hoje?</legend>
+              <div class="quiz__opcoes">
+                  <label class="quiz__opcao">
+                    <input type="radio" name="desafio" value="basico" data-rotulo="Aprender o básico (senta, deita, fica, vem e junto)">
+                    <span>Aprender o básico: senta, deita, fica, vem e junto</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="desafio" value="passeio" data-rotulo="Passear sem puxar a guia">
+                    <span>Passear sem puxar a guia</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="desafio" value="filhote" data-rotulo="Xixi no lugar, mordidas e socialização">
+                    <span>Xixi no lugar, mordidas e socialização</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="desafio" value="comportamento" data-rotulo="Latidos, pulos, destruição ou ansiedade quando fica sozinho">
+                    <span>Latidos, pulos, destruição ou ansiedade quando fica sozinho</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="desafio" value="reativo" data-rotulo="Reage, tem medo ou é agressivo com cães, pessoas ou veículos">
+                    <span>Reage, tem medo ou é agressivo com cães, pessoas ou veículos</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="desafio" value="orientacao" data-rotulo="Ainda não sei, quero uma orientação">
+                    <span>Ainda não sei: quero uma orientação</span>
+                  </label>
+              </div>
+            </fieldset>
+            <fieldset class="quiz__etapa" data-quiz-etapa hidden>
+              <legend class="quiz__pergunta">Qual o porte do seu cão?</legend>
+              <div class="quiz__opcoes quiz__opcoes--linha">
+                  <label class="quiz__opcao">
+                    <input type="radio" name="porte" value="pequeno" data-rotulo="pequeno">
+                    <span>Pequeno</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="porte" value="medio" data-rotulo="médio">
+                    <span>Médio</span>
+                  </label>
+                  <label class="quiz__opcao">
+                    <input type="radio" name="porte" value="grande" data-rotulo="grande">
+                    <span>Grande</span>
+                  </label>
+              </div>
+            </fieldset>
+            <div class="quiz__etapa" data-quiz-etapa hidden>
+              <label class="quiz__pergunta" for="quiz-nome">Como seu cão se chama? <span class="quiz__opcional">(opcional)</span></label>
+              <input class="quiz__campo" id="quiz-nome" name="nome" type="text" maxlength="40" autocomplete="off">
+            </div>
+            <p class="quiz__aviso" data-quiz-aviso aria-live="assertive"></p>
+            <div class="quiz__navegacao" data-quiz-navegacao>
+              <button class="btn btn--secundario" type="button" data-quiz-voltar hidden>Voltar</button>
+              <button class="btn btn--primario" type="button" data-quiz-avancar>Próxima</button>
+            </div>
+          </form>
+
+          <div class="quiz__resultado" data-quiz-resultado hidden>
+            <h3 class="quiz__resultado-titulo" data-resultado-titulo></h3>
+            <dl class="quiz__detalhes">
+              <div>
+                <dt>Para quem</dt>
+                <dd data-resultado-para-quem></dd>
+              </div>
+              <div>
+                <dt>O que resolve</dt>
+                <dd data-resultado-resolve></dd>
+              </div>
+              <div>
+                <dt>Valor de referência</dt>
+                <dd data-resultado-preco></dd>
+              </div>
+            </dl>
+            <p class="quiz__notas" data-resultado-notas></p>
+            <div class="botoes">
+              <a class="btn btn--whatsapp" href="#contato" data-whatsapp>
+                <svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-whatsapp"/></svg>
+                <span>Enviar para o Jhonatan</span>
+              </a>
+              <button class="btn btn--secundario" type="button" data-quiz-refazer>Refazer o teste</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -831,6 +1093,15 @@
             <span>Horário a combinar com o adestrador</span>
           </li>
         </ul>
+
+        <!-- Aparece só com JS (compartilhar.js) -->
+        <div class="contato__indicar" data-compartilhar-caixa hidden>
+          <p>Conhece alguém que precisa de ajuda com o cão?</p>
+          <button class="btn btn--secundario" type="button" data-compartilhar>
+            <svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-compartilhar"/></svg>
+            <span>Indique para um amigo</span>
+          </button>
+        </div>
       </div>
     </section>
   </main>
